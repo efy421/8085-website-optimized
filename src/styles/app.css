@@ -1,0 +1,40 @@
+/* Basic reset to ensure scrolling works */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content-container {
+  position: relative;
+  z-index: 2;
+}
+
+.debug-message {
+  margin: 2rem auto 4rem;
+  padding: 1.5rem;
+  max-width: 600px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  color: #333;
+}

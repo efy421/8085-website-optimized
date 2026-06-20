@@ -1,0 +1,31 @@
+# Security Headers Configuration for XSS Prevention
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # XSS Protection
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    
+    # Content Security Policy (CSP) - Prevents XSS attacks
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com https://*.elevenlabs.io;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self' https://*.elevenlabs.io wss://*.elevenlabs.io https://*.n8n.212345678.xyz;
+      media-src 'self' data:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+      block-all-mixed-content;
+      upgrade-insecure-requests
+    """
+    
+    # Additional security headers
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"

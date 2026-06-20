@@ -1,0 +1,239 @@
+/* Meet the Founders Section Styles */
+.meet-the-founders-section {
+  background-color: #101011; /* black background */
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.founders-container {
+  max-width: 1200px; /* centered content */
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.founders-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  /* transition: opacity 0.8s ease-in-out; */
+}
+
+.founders-main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #F5F4ED; /* beige01 text */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.founders-description {
+  font-size: 1.25rem;
+  color: #F5F4ED;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.founders-profiles {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* no spacing between sections */
+}
+
+.founder-profile {
+  width: 100%;
+  /* transition: opacity 0.8s ease-in-out; */
+}
+
+.founder-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+
+/* Alternate layout for visual interest */
+.founder-profile:nth-child(even) .founder-content {
+  flex-direction: row-reverse;
+}
+
+.founder-image-container {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+}
+
+.founder-profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid;
+  /* border color set via inline style */
+}
+
+.founder-info {
+  flex: 1;
+  color: #F5F4ED;
+}
+
+.founder-quote {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0 0 2rem 0;
+  color: #F5F4ED;
+  opacity: 0.95;
+}
+
+.founder-details {
+  color: #F5F4ED;
+}
+
+.founder-name-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.founder-designation-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.founder-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #F5F4ED;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.founder-designation {
+  font-size: 1rem;
+  color: #F5F4ED;
+  opacity: 0.8;
+}
+
+.linkedin-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1.5px solid #F5F4ED;
+  color: #F5F4ED;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.linkedin-icon-button:hover {
+  background-color: #F5F4ED;
+  color: #101011;
+  transform: translateY(-1px);
+}
+.linkedin-icon {
+  flex-shrink: 0;
+}
+
+/* Fade-in animation */
+.opacity-0 {
+  opacity: 1; /* Make content visible by default */
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .meet-the-founders-section {
+    padding: 3rem 0;
+  }
+  
+  .founders-container {
+    padding: 0 1rem;
+  }
+  
+  .founders-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .founders-description {
+    font-size: 1.125rem;
+  }
+  
+  .founder-content {
+    flex-direction: column !important; /* vertical stack on mobile */
+    text-align: center;
+    gap: 2rem;
+    padding: 2.5rem 0;
+  }
+  
+  .founder-image-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .founder-quote {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .founder-details {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .founder-name-title {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .founder-designation-row {
+    justify-content: center;
+  }
+  
+  .founder-name {
+    font-size: 1rem;
+  }
+  
+  .linkedin-icon-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .linkedin-icon-button .linkedin-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .founders-main-title {
+    font-size: 2rem;
+  }
+  
+  .founders-description {
+    font-size: 1rem;
+  }
+  
+  .founder-image-container {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .founder-quote {
+    font-size: 0.9rem;
+  }
+}

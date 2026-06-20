@@ -1,0 +1,31 @@
+/* Hide scrollbars everywhere */
+html, body, div, section {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbars for Chrome, Safari and Opera */
+html::-webkit-scrollbar, 
+body::-webkit-scrollbar, 
+div::-webkit-scrollbar, 
+section::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Additional fix for partners strip scrollbar */
+.partners-strip-container {
+  overflow: hidden !important;
+}
+
+.partners-strip {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.partners-strip::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
