@@ -607,12 +607,13 @@ function LandingPage({ onStartConversation }) {
         {/* Section 6: Trust */}
         <section
           id="trust"
-          className="landing-trust-strip landing-section"
+          className="landing-trust-strip landing-section landing-section--muted"
           data-motion-section="trust"
           data-signal-state={getSectionSignalState('trust', activeSectionId)}
-          aria-label={trustStripSurface.ariaLabel}
+          aria-labelledby="trust-title"
+          aria-describedby="trust-intro"
         >
-          <div className="landing-shell landing-section-shell">
+          <div className="landing-shell landing-section-shell" data-signal-anchor>
             <div className="landing-section-heading">
               <p className="landing-eyebrow">Trusted by</p>
               <h2 id="trust-title">Real outcomes for real teams.</h2>
@@ -620,16 +621,14 @@ function LandingPage({ onStartConversation }) {
                 60% faster approvals at Audi. 70% less manual handling at DHL. 3x more batches at Bayer.
               </p>
             </div>
-            <div className="landing-trust-strip__inner">
-              <div className="landing-trust-strip__logos" aria-label="Trusted company logos">
-                {trustStripSurface.logos.map((logo) => (
-                  <div key={logo.alt} className="landing-trust-strip__logo">
-                    <img src={logo.src} alt={logo.alt} loading="lazy" />
-                    {logo.context ? <span className="landing-trust-strip__context">{logo.context}</span> : null}
-                    {logo.outcome ? <span className="landing-trust-strip__outcome">{logo.outcome}</span> : null}
-                  </div>
-                ))}
-              </div>
+            <div className="landing-trust-strip__logos" aria-label="Trusted company logos">
+              {trustStripSurface.logos.map((logo) => (
+                <div key={logo.alt} className="landing-trust-strip__logo">
+                  <img src={logo.src} alt={logo.alt} loading="lazy" />
+                  {logo.context ? <span className="landing-trust-strip__context">{logo.context}</span> : null}
+                  {logo.outcome ? <span className="landing-trust-strip__outcome">{logo.outcome}</span> : null}
+                </div>
+              ))}
             </div>
           </div>
         </section>
