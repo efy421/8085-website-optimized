@@ -572,6 +572,7 @@ function LandingPage({ onStartConversation }) {
                   <div key={logo.alt} className="landing-trust-strip__logo">
                     <img src={logo.src} alt={logo.alt} loading="lazy" />
                     {logo.context ? <span className="landing-trust-strip__context">{logo.context}</span> : null}
+                    {logo.outcome ? <span className="landing-trust-strip__outcome">{logo.outcome}</span> : null}
                   </div>
                 ))}
               </div>
