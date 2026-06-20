@@ -22,11 +22,11 @@ describe('Sprint 5 motion integration and Ada experience', () => {
     );
 
     expect(screen.getByLabelText(/ada relay and section progress/i)).toBeInTheDocument();
-    expect(screen.getByText(/best-fit work/i)).toBeInTheDocument();
+    expect(screen.getByText(/what can be automated/i)).toBeInTheDocument();
     expect(screen.queryByText(/^ada relay$/i)).not.toBeInTheDocument();
     expect(screen.getByText(/^online$/i)).toBeInTheDocument();
     expect(
-      screen.getByText(/these examples show the kinds of repeatable work that fit well\./i, {
+      screen.getByText(/these are the kinds of repeatable work that fit well\./i, {
         selector: '.landing-motion-spine__relay-bubble p',
       }),
     ).toBeInTheDocument();
@@ -43,25 +43,25 @@ describe('Sprint 5 motion integration and Ada experience', () => {
     );
 
     rerender(
-      <LandingMotionSpine sections={motionSections} activeSectionId="agent-harness" isHidden={false} />,
+      <LandingMotionSpine sections={motionSections} activeSectionId="solution" isHidden={false} />,
     );
 
     expect(container.querySelector('.landing-motion-spine')).toHaveClass('landing-motion-spine--reentering');
-    expect(screen.getByText(/^how it works$/i, { selector: '.landing-motion-spine__active-pill' })).toBeInTheDocument();
+    expect(screen.getByText(/^solution$/i, { selector: '.landing-motion-spine__active-pill' })).toBeInTheDocument();
   });
 
   it('finishes narration typing within one second', () => {
     vi.useFakeTimers();
 
     try {
-      render(<LandingMotionSpine sections={motionSections} activeSectionId="workflow-story" />);
+      render(<LandingMotionSpine sections={motionSections} activeSectionId="problems" />);
 
       act(() => {
         vi.advanceTimersByTime(1000);
       });
 
       expect(
-        screen.getByText(/this grounds the offer in repeatable multi-step work\./i, {
+        screen.getByText(/your team is stuck in repeatable work\./i, {
           selector: '.landing-motion-spine__relay-bubble p',
         }),
       ).toBeInTheDocument();
@@ -101,12 +101,12 @@ describe('Sprint 5 motion integration and Ada experience', () => {
   });
 
   it('stores sprint 5 motion and contact surfaces as structured data', () => {
-    expect(motionSections).toHaveLength(9);
+    expect(motionSections).toHaveLength(8);
     expect(motionSections.slice(0, 4).map((section) => section.id)).toEqual([
       'hero',
-      'workflow-story',
-      'agent-harness',
-      'security',
+      'problems',
+      'solution',
+      'capabilities',
     ]);
     motionSections.forEach((section) => {
       expect(section.narration).toHaveLength(2);

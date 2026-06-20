@@ -400,83 +400,142 @@ export const workflowStorySurface = {
   ],
 };
 
+export const problemsSurface = {
+  ariaLabel: 'Business problems we solve',
+  eyebrow: 'The problem',
+  title: 'Your team is stuck in repeatable work.',
+  intro: 'The work gets done. But it costs time, energy, and growth.',
+  problems: [
+    {
+      id: 'repetition',
+      title: 'The same process runs every day',
+      body: 'Someone opens tools, gathers data, applies rules, and moves the task forward — over and over.',
+    },
+    {
+      id: 'headcount',
+      title: "Adding people hasn't fixed it",
+      body: 'More hands help temporarily, but the bottleneck returns as work grows.',
+    },
+    {
+      id: 'tools',
+      title: 'Generic tools don\'t fit your process',
+      body: 'Off-the-shelf software forces your team to work around it instead of with it.',
+    },
+    {
+      id: 'visibility',
+      title: 'Work gets stuck between people',
+      body: 'Tasks sit in inboxes, chat threads, and spreadsheets waiting for the next person.',
+    },
+  ],
+};
+
+export const solutionSurface = {
+  ariaLabel: 'How 8085 solves it',
+  eyebrow: 'Solution',
+  title: 'One workflow at a time.',
+  intro: 'Pick the process that slows your team down most. We turn it into an intelligent workflow. Then expand.',
+  differentiators: [
+    {
+      id: 'tools',
+      title: 'Works with your existing tools',
+      body: 'No new platform to learn. 8085 uses the apps and systems your team already uses.',
+    },
+    {
+      id: 'rules',
+      title: 'Follows your business rules',
+      body: 'The workflow applies your logic, not a generic template. Exceptions go to people.',
+    },
+    {
+      id: 'ownership',
+      title: 'You own everything',
+      body: 'The workflow, logic, and data stay yours. It becomes part of your business.',
+    },
+  ],
+};
+
+export const faqSurface = {
+  ariaLabel: 'Frequently asked questions',
+  eyebrow: 'FAQ',
+  title: 'Questions we hear often.',
+  intro: 'If your question isn\'t here, ask Agent Ada or book a call.',
+  items: [
+    {
+      id: 'timeline',
+      question: 'How long does the first workflow take to build?',
+      answer: 'Most first workflows are live within 2-4 weeks. We start with one process, prove the value, then decide where to expand.',
+    },
+    {
+      id: 'tools',
+      question: 'Do I need to change my existing tools?',
+      answer: 'No. 8085 works with the tools your team already uses — browsers, web apps, internal systems, and APIs.',
+    },
+    {
+      id: 'exceptions',
+      question: 'What happens when the workflow hits something unexpected?',
+      answer: 'The workflow pauses and hands the work to a person for review. Your team stays in control of judgment calls and exceptions.',
+    },
+    {
+      id: 'cost',
+      question: 'How much does it cost?',
+      answer: 'Pricing depends on the workflow complexity. We scope the first workflow together and give you a clear number before any work starts.',
+    },
+    {
+      id: 'start',
+      question: 'Can we start with just one workflow?',
+      answer: 'Yes. That is the recommended approach. Start with one process, measure the impact, then decide if and where to expand.',
+    },
+    {
+      id: 'ownership',
+      question: 'Who owns the workflow after it is built?',
+      answer: 'You do. The workflow, the logic, the tools, and the data all stay yours. It becomes part of your business, not a rented black box.',
+    },
+  ],
+};
+
 export const motionSections = [
   {
     id: 'hero',
     label: 'Start',
     relay: 'Core promise',
     narration: [
-      'This starts with one workflow your team already runs.',
-      'The page moves from business value to mechanism to proof.',
+      '8085 automates repeatable work your team already does.',
+      'Same people. More output. Less manual drag.',
     ],
     accent: '#81d9cb',
     glow: 'rgba(129, 217, 203, 0.34)',
   },
   {
-    id: 'workflow-story',
-    label: 'Example',
-    relay: 'Work shape',
+    id: 'problems',
+    label: 'Problem',
+    relay: 'Pain points',
     narration: [
-      'This grounds the offer in repeatable multi-step work.',
-      'The team already knows the job. The problem is repeating it by hand.',
+      'Your team is stuck in repeatable work.',
+      'The work gets done but it costs time and growth.',
     ],
     accent: '#d2a14e',
     glow: 'rgba(210, 161, 78, 0.3)',
   },
   {
-    id: 'agent-harness',
-    label: 'How it works',
-    relay: 'One workflow first',
+    id: 'solution',
+    label: 'Solution',
+    relay: 'How 8085 works',
     narration: [
-      'Start with one workflow instead of a full transformation.',
-      'Build the setup, run the repeatable part, and keep people in control.',
+      'Pick one workflow. We turn it into an intelligent workflow.',
+      'Uses your tools, follows your rules, you own everything.',
     ],
     accent: '#7bd0c2',
     glow: 'rgba(123, 208, 194, 0.32)',
   },
   {
-    id: 'security',
-    label: 'Ownership',
-    relay: 'Control visible',
-    narration: [
-      'Ownership, approvals, and scoped access stay visible.',
-      'What gets built becomes part of the business instead of a rented black box.',
-    ],
-    accent: '#6fb6ab',
-    glow: 'rgba(111, 182, 171, 0.28)',
-  },
-  {
-    id: 'differentiation',
-    label: 'Difference',
-    relay: 'Why 8085',
-    narration: [
-      'This is the difference between chat, fixed automation, and a workflow that can actually move work.',
-      'The extra layer helps work continue through tools, rules, and review.',
-    ],
-    accent: '#cf7c45',
-    glow: 'rgba(207, 124, 69, 0.28)',
-  },
-  {
     id: 'capabilities',
     label: 'Examples',
-    relay: 'Best-fit work',
+    relay: 'What can be automated',
     narration: [
-      'These examples show the kinds of repeatable work that fit well.',
-      'The pattern is familiar business work done more consistently and with less manual effort.',
+      'These are the kinds of repeatable work that fit well.',
+      'Familiar business work done more consistently.',
     ],
     accent: '#8f8ae4',
     glow: 'rgba(143, 138, 228, 0.3)',
-  },
-  {
-    id: 'proof',
-    label: 'Results',
-    relay: 'Measured gains',
-    narration: [
-      'The stronger proof comes after the mechanism is clear.',
-      'The gains grow as the workflow gets more specialized.',
-    ],
-    accent: '#7d8e97',
-    glow: 'rgba(125, 142, 151, 0.24)',
   },
   {
     id: 'projects',
@@ -490,12 +549,34 @@ export const motionSections = [
     glow: 'rgba(201, 136, 52, 0.22)',
   },
   {
+    id: 'trust',
+    label: 'Trust',
+    relay: 'Credibility',
+    narration: [
+      'Trusted by teams from leading companies.',
+      'Real outcomes across industries.',
+    ],
+    accent: '#6fb6ab',
+    glow: 'rgba(111, 182, 171, 0.28)',
+  },
+  {
+    id: 'faq',
+    label: 'FAQ',
+    relay: 'Questions',
+    narration: [
+      'Common questions about how 8085 works.',
+      'Timeline, tools, cost, and ownership.',
+    ],
+    accent: '#cf7c45',
+    glow: 'rgba(207, 124, 69, 0.28)',
+  },
+  {
     id: 'contact',
     label: 'Contact',
     relay: 'Start here',
     narration: [
-      'The goal is one clear workflow conversation.',
-      '8085 will tell you quickly whether the workflow is a good fit.',
+      'Show us one workflow. We will tell you if it is a fit.',
+      'Book a strategy call or talk to Agent Ada.',
     ],
     accent: '#81d9cb',
     glow: 'rgba(129, 217, 203, 0.34)',

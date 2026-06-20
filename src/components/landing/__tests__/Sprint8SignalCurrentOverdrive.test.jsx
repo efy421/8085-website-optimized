@@ -57,6 +57,6 @@ describe('Sprint 8 landing motion simplification', () => {
     expect(queryByTestId('signal-current')).not.toBeInTheDocument();
     expect(queryByTestId('motion-spine')).not.toBeInTheDocument();
     expect(container.querySelector('#hero')).toHaveAttribute('data-signal-state', 'active');
-    expect(container.querySelector('#workflow-story')).toHaveAttribute('data-signal-state', 'upcoming');
+    expect(container.querySelector('#problems')).toHaveAttribute('data-signal-state', 'upcoming');
   });
 });

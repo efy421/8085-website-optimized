@@ -10,18 +10,6 @@ vi.mock('../CapabilitySceneDeck', () => ({
   default: () => <div data-testid="capability-scene-deck" />,
 }));
 
-vi.mock('../DifferentiationSplitSurface', () => ({
-  default: () => <div data-testid="differentiation-surface" />,
-}));
-
-vi.mock('../TrustSurface', () => ({
-  default: () => <div data-testid="trust-surface" />,
-}));
-
-vi.mock('../LandingMotionSpine', () => ({
-  default: () => null,
-}));
-
 vi.mock('../ContactCommandSurface', () => ({
   default: ({ headingId, surface }) => (
     <div data-testid="contact-command-surface">
@@ -55,15 +43,15 @@ describe('Sprint 6 hardening and polish', () => {
     installMatchMedia({ reducedMotion: true });
   });
 
-  it('renders the founder-first hero, trust strip, and grounded workflow story', () => {
+  it('renders the hero, problems section, and trust strip in the new narrative order', () => {
     const onStartConversation = vi.fn();
     const { container } = render(<LandingPage onStartConversation={onStartConversation} />);
     const heroSection = container.querySelector('#hero');
-    const trustStrip = container.querySelector('.landing-trust-strip');
-    const workflowStorySection = container.querySelector('#workflow-story');
+    const problemsSection = container.querySelector('#problems');
+    const trustSection = container.querySelector('.landing-trust-strip');
 
-    if (!heroSection || !trustStrip || !workflowStorySection) {
-      throw new Error('Expected hero, trust strip, and workflow story to render.');
+    if (!heroSection || !problemsSection || !trustSection) {
+      throw new Error('Expected hero, problems, and trust sections to render.');
     }
 
     const heroQueries = within(heroSection);
@@ -75,11 +63,6 @@ describe('Sprint 6 hardening and polish', () => {
     expect(
       heroQueries.getByRole('heading', { name: /automate your team's repeatable work and grow output without headcount\./i }),
     ).toBeInTheDocument();
-    expect(
-      heroQueries.getByText(
-        /8085 automates the repeatable work your team already does\. same people\. more output\. less manual drag\./i,
-      ),
-    ).toBeInTheDocument();
     expect(heroQueries.getByText(/start with one workflow/i)).toBeInTheDocument();
     expect(heroQueries.getByText(/built around your process/i)).toBeInTheDocument();
     expect(heroQueries.getByText(/you keep ownership/i)).toBeInTheDocument();
@@ -87,18 +70,11 @@ describe('Sprint 6 hardening and polish', () => {
       'href',
       'https://calendly.com/f-shamim/client-call',
     );
-    expect(heroQueries.getByRole('link', { name: /book strategy call/i })).toHaveAttribute('target', '_blank');
     expect(heroQueries.getByRole('button', { name: /talk to agent ada/i })).toBeInTheDocument();
 
-    expect(within(trustStrip).getByText(/trusted by teams from/i)).toBeInTheDocument();
-    expect(within(trustStrip).getAllByRole('img')).toHaveLength(6);
+    expect(container.querySelector('#problems-title')).toHaveTextContent(/your team is stuck in repeatable work\./i);
 
-    expect(container.querySelector('#workflow-story-title')).toHaveTextContent(
-      /from manual repetition to automated workflow\./i,
-    );
-    expect(within(workflowStorySection).getByText(/^before$/i)).toBeInTheDocument();
-    expect(within(workflowStorySection).getByText(/^with 8085$/i)).toBeInTheDocument();
-    expect(within(workflowStorySection).getByText(/^after$/i)).toBeInTheDocument();
+    expect(within(trustSection).getAllByRole('img')).toHaveLength(6);
 
     fireEvent.click(heroQueries.getByRole('button', { name: /talk to agent ada/i }));
     expect(onStartConversation).toHaveBeenCalledTimes(1);
@@ -143,62 +119,48 @@ describe('Sprint 6 hardening and polish', () => {
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
-  it('keeps reduced-motion mode while rendering the new section order and later proof', () => {
+  it('keeps reduced-motion mode while rendering the new 8-section narrative order', () => {
     const { container } = render(<LandingPage onStartConversation={vi.fn()} />);
-    const workflowStorySection = container.querySelector('#workflow-story');
-    const howItWorksSection = container.querySelector('#agent-harness');
-    const ownershipSection = container.querySelector('#security');
-    const differenceSection = container.querySelector('#differentiation');
-    const proofSection = container.querySelector('#proof');
+    const problemsSection = container.querySelector('#problems');
+    const solutionSection = container.querySelector('#solution');
+    const capabilitiesSection = container.querySelector('#capabilities');
+    const projectsSection = container.querySelector('#projects');
+    const trustSection = container.querySelector('#trust');
+    const faqSection = container.querySelector('#faq');
     const contactSection = container.querySelector('#contact');
 
     if (
-      !workflowStorySection ||
-      !howItWorksSection ||
-      !ownershipSection ||
-      !differenceSection ||
-      !proofSection ||
+      !problemsSection ||
+      !solutionSection ||
+      !capabilitiesSection ||
+      !projectsSection ||
+      !trustSection ||
+      !faqSection ||
       !contactSection
     ) {
-      throw new Error('Expected landing sections to render.');
+      throw new Error('Expected all 8 landing sections to render.');
     }
 
     expect(container.querySelector('.landing-page')).toHaveClass('landing-page--reduced-motion');
-    expect(screen.queryByTestId('motion-spine')).not.toBeInTheDocument();
     expect(container.querySelector('#hero')).toHaveAttribute('data-signal-state', 'active');
-    expect(container.querySelector('#workflow-story')).toHaveAttribute('data-signal-state', 'upcoming');
+    expect(container.querySelector('#problems')).toHaveAttribute('data-signal-state', 'upcoming');
 
-    expect(container.querySelector('#workflow-story')).toHaveAttribute('aria-labelledby', 'workflow-story-title');
-    expect(container.querySelector('#agent-harness')).toHaveAttribute('aria-labelledby', 'agent-harness-title');
-    expect(container.querySelector('#agent-harness-title')).toHaveTextContent(/start with one workflow\./i);
-    expect(within(howItWorksSection).getByText(/^how it works$/i)).toBeInTheDocument();
+    expect(container.querySelector('#problems')).toHaveAttribute('aria-labelledby', 'problems-title');
+    expect(container.querySelector('#problems-title')).toHaveTextContent(/your team is stuck in repeatable work\./i);
+
+    expect(container.querySelector('#solution')).toHaveAttribute('aria-labelledby', 'solution-title');
+    expect(container.querySelector('#solution-title')).toHaveTextContent(/one workflow at a time\./i);
     expect(
-      within(howItWorksSection).getByText(/^pick one workflow$/i, { selector: '.landing-hero-flow__title' }),
-    ).toBeInTheDocument();
-    expect(
-      within(howItWorksSection).getByText(/^your team stays in control$/i, {
-        selector: '.landing-hero-flow__title',
-      }),
+      within(solutionSection).getByText(/^pick one workflow$/i, { selector: '.landing-hero-flow__title' }),
     ).toBeInTheDocument();
 
-    expect(container.querySelector('#security')).toHaveAttribute('aria-labelledby', 'security-title');
-    expect(container.querySelector('#security-title')).toHaveTextContent(/you own what we build\./i);
-    expect(container.querySelector('#differentiation')).toHaveAttribute('aria-labelledby', 'differentiation-title');
-    expect(container.querySelector('#differentiation-title')).toHaveTextContent(
-      /not a chatbot\. not a brittle script\./i,
-    );
-    expect(container.querySelector('#proof')).toHaveAttribute('aria-labelledby', 'proof-title');
-    expect(container.querySelector('#proof-title')).toHaveTextContent(
-      /proven gains from real workflows\./i,
-    );
-    expect(within(proofSection).getByText(/^80%$/i)).toBeInTheDocument();
-    expect(within(proofSection).getByText(/^same team$/i)).toBeInTheDocument();
-    expect(within(proofSection).getByText(/^5x$/i)).toBeInTheDocument();
+    expect(container.querySelector('#faq')).toHaveAttribute('aria-labelledby', 'faq-title');
+    expect(container.querySelector('#faq-title')).toHaveTextContent(/questions we hear often\./i);
+
     expect(container.querySelector('#contact')).toHaveAttribute('aria-labelledby', 'contact-title');
-    expect(container.querySelector('#contact-title')).toHaveTextContent(/show us one workflow\./i);
 
-    expect(workflowStorySection.compareDocumentPosition(howItWorksSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(ownershipSection.compareDocumentPosition(differenceSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
-    expect(proofSection.compareDocumentPosition(contactSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(problemsSection.compareDocumentPosition(solutionSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(projectsSection.compareDocumentPosition(trustSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(faqSection.compareDocumentPosition(contactSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 });

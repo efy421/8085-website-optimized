@@ -3,19 +3,16 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CapabilitySceneDeck from './CapabilitySceneDeck';
 import ContactCommandSurface from './ContactCommandSurface';
-import DifferentiationSplitSurface from './DifferentiationSplitSurface';
 import HeroShaderCanvas from './HeroShaderCanvas';
 import MobileContactDock from './MobileContactDock';
-import TrustSurface from './TrustSurface';
 import {
   contactSurface,
-  differentiationSurface,
+  faqSurface,
   motionSections,
-  proofSurface,
+  problemsSurface,
   projectsSurface,
+  solutionSurface,
   trustStripSurface,
-  trustSurface,
-  workflowStorySurface,
 } from './landingSystemData';
 import '../../styles/landing-page.css';
 
@@ -28,40 +25,25 @@ const heroHarnessSteps = [
     id: 'workflow',
     index: '01',
     title: 'Pick one workflow',
-    copy: 'Start with the internal process that slows the team down and repeats often enough to matter.',
+    copy: 'Start with the process that slows your team down most.',
   },
   {
     id: 'setup',
     index: '02',
     title: 'We build the setup',
-    copy: 'We connect the tools, logic, context, and approvals around that workflow.',
+    copy: 'We connect your tools, logic, context, and approvals.',
   },
   {
     id: 'run',
     index: '03',
-    title: 'The workflow handles the repeatable work',
-    copy: 'The repeated manual steps stop depending on a person doing them every time.',
+    title: 'The workflow runs the repeatable work',
+    copy: 'Manual steps stop depending on a person doing them every time.',
   },
   {
     id: 'control',
     index: '04',
     title: 'Your team stays in control',
-    copy: 'People review what matters and keep ownership of decisions and exceptions.',
-  },
-];
-
-const processPrinciples = [
-  {
-    title: 'No full transformation first',
-    body: 'Start where the team already feels the manual drag, not with a company-wide change program.',
-  },
-  {
-    title: 'Built around the way the team works',
-    body: 'The workflow wraps around the existing process instead of forcing the team onto a fake demo path.',
-  },
-  {
-    title: 'Expand only after value is clear',
-    body: 'Once one workflow proves out, it becomes much easier to decide where the next one should be.',
+    copy: 'People review what matters and keep ownership of decisions.',
   },
 ];
 
@@ -130,18 +112,14 @@ function HeroHarnessFlow({ className = '' }) {
   );
 }
 
-function WorkflowStorySurface({ surface }) {
+function ProblemsSurface({ surface }) {
   return (
-    <div className="landing-workflow-story" aria-label={surface.ariaLabel}>
-      <div className="landing-workflow-story__cards">
-        {surface.cards.map((card) => (
-          <article
-            key={card.id}
-            className={`landing-workflow-story__card landing-workflow-story__card--${card.tone}`}
-          >
-            <p className="landing-callout-label">{card.label}</p>
-            <h3>{card.title}</h3>
-            <p>{card.body}</p>
+    <div className="landing-problems-surface" aria-label={surface.ariaLabel}>
+      <div className="landing-problems-grid">
+        {surface.problems.map((problem) => (
+          <article key={problem.id} className="landing-problem-card">
+            <h3 className="landing-problem-card__title">{problem.title}</h3>
+            <p className="landing-problem-card__body">{problem.body}</p>
           </article>
         ))}
       </div>
@@ -149,19 +127,36 @@ function WorkflowStorySurface({ surface }) {
   );
 }
 
-function ResultsSurface({ surface }) {
+function FaqSurface({ surface }) {
+  const [openId, setOpenId] = useState(null);
+
   return (
-    <div className="landing-results-surface" aria-label={surface.ariaLabel}>
-      <div className="landing-results-grid">
-        {surface.cards.map((card) => (
-          <article key={card.id} className="landing-results-card">
-            <p className="landing-results-card__label">{card.label}</p>
-            <div className="landing-results-card__value">{card.value}</div>
-            <p className="landing-results-card__body">{card.body}</p>
-          </article>
-        ))}
+    <div className="landing-faq-surface" aria-label={surface.ariaLabel}>
+      <div className="landing-faq-list">
+        {surface.items.map((item) => {
+          const isOpen = openId === item.id;
+          return (
+            <div key={item.id} className={`landing-faq-item${isOpen ? ' landing-faq-item--open' : ''}`}>
+              <button
+                type="button"
+                className="landing-faq-item__question"
+                aria-expanded={isOpen}
+                onClick={() => setOpenId(isOpen ? null : item.id)}
+              >
+                <span>{item.question}</span>
+                <span className="landing-faq-item__icon" aria-hidden="true">
+                  {isOpen ? '\u2212' : '+'}
+                </span>
+              </button>
+              {isOpen ? (
+                <div className="landing-faq-item__answer">
+                  <p>{item.answer}</p>
+                </div>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
-      <p className="landing-results-note">{surface.note}</p>
     </div>
   );
 }
@@ -423,23 +418,14 @@ function LandingPage({ onStartConversation }) {
           </a>
 
           <nav className="landing-nav" aria-label="Primary navigation">
-            <a href="#agent-harness" aria-current={activeSectionId === 'agent-harness' ? 'location' : undefined}>
+            <a href="#solution" aria-current={activeSectionId === 'solution' ? 'location' : undefined}>
               How it works
-            </a>
-            <a href="#security" aria-current={activeSectionId === 'security' ? 'location' : undefined}>
-              Ownership
-            </a>
-            <a
-              href="#differentiation"
-              aria-current={activeSectionId === 'differentiation' ? 'location' : undefined}
-            >
-              Difference
-            </a>
-            <a href="#capabilities" aria-current={activeSectionId === 'capabilities' ? 'location' : undefined}>
-              Examples
             </a>
             <a href="#projects" aria-current={activeSectionId === 'projects' ? 'location' : undefined}>
               Projects
+            </a>
+            <a href="#faq" aria-current={activeSectionId === 'faq' ? 'location' : undefined}>
+              FAQ
             </a>
             <a href="#contact" aria-current={activeSectionId === 'contact' ? 'location' : undefined}>
               Contact
@@ -457,6 +443,7 @@ function LandingPage({ onStartConversation }) {
       </header>
 
       <main id="landing-main" tabIndex={-1}>
+        {/* Section 1: Hero */}
         <section
           id="hero"
           className="landing-hero"
@@ -508,109 +495,54 @@ function LandingPage({ onStartConversation }) {
           </div>
         </section>
 
-        <section className="landing-trust-strip" aria-label={trustStripSurface.ariaLabel}>
-          <div className="landing-shell landing-trust-strip__inner">
-            <p className="landing-panel-label">{trustStripSurface.label}</p>
-            <div className="landing-trust-strip__logos" aria-label="Trusted company logos">
-              {trustStripSurface.logos.map((logo) => (
-                <div key={logo.alt} className="landing-trust-strip__logo">
-                  <img src={logo.src} alt={logo.alt} loading="lazy" />
-                  {logo.context ? <span className="landing-trust-strip__context">{logo.context}</span> : null}
-                  {logo.outcome ? <span className="landing-trust-strip__outcome">{logo.outcome}</span> : null}
-                </div>
+        {/* Section 2: Problems */}
+        <LandingSection
+          id="problems"
+          eyebrow={problemsSurface.eyebrow}
+          title={problemsSurface.title}
+          intro={problemsSurface.intro}
+          tone="muted"
+          signalState={getSectionSignalState('problems', activeSectionId)}
+        >
+          <ProblemsSurface surface={problemsSurface} />
+        </LandingSection>
+
+        {/* Section 3: Solution */}
+        <LandingSection
+          id="solution"
+          eyebrow={solutionSurface.eyebrow}
+          title={solutionSurface.title}
+          intro={solutionSurface.intro}
+          signalState={getSectionSignalState('solution', activeSectionId)}
+        >
+          <div className="landing-solution-grid">
+            <div className="landing-solution-steps">
+              <HeroHarnessFlow className="landing-hero-flow--process" />
+            </div>
+            <div className="landing-solution-differentiators">
+              {solutionSurface.differentiators.map((item) => (
+                <article key={item.id} className="landing-solution-differentiator">
+                  <h3 className="landing-solution-differentiator__title">{item.title}</h3>
+                  <p className="landing-solution-differentiator__body">{item.body}</p>
+                </article>
               ))}
             </div>
           </div>
-        </section>
-
-        <LandingSection
-          id="workflow-story"
-          eyebrow="What this looks like"
-          title={workflowStorySurface.title}
-          intro={workflowStorySurface.intro}
-          tone="muted"
-          signalState={getSectionSignalState('workflow-story', activeSectionId)}
-        >
-          <WorkflowStorySurface surface={workflowStorySurface} />
         </LandingSection>
 
-        <LandingSection
-          id="agent-harness"
-          eyebrow="How it works"
-          title="Start with one workflow."
-          intro="Pick the process that repeats most. Prove value. Then expand."
-          signalState={getSectionSignalState('agent-harness', activeSectionId)}
-        >
-          <div className="landing-process-grid">
-            <article className="landing-process-lead">
-              <p className="landing-panel-label">Why this works</p>
-              <h3>Pick the obvious one first.</h3>
-              <p>
-                The best workflow to automate is already slowing your team down. It is repeatable,
-                multi-step, and important enough that removing manual work changes the day.
-              </p>
-
-              <ul className="landing-premium-bullet-list" aria-label="How to choose the first workflow">
-                {processPrinciples.map((principle) => (
-                  <li key={principle.title} className="landing-premium-bullet-item">
-                    <span className="landing-premium-bullet-dot" aria-hidden="true" />
-                    <div className="landing-premium-bullet-copy">
-                      <p className="landing-premium-bullet-kicker">{principle.title}</p>
-                      <p className="landing-premium-bullet-text">{principle.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </article>
-
-            <div className="landing-process-flow-shell">
-              <HeroHarnessFlow className="landing-hero-flow--process" />
-            </div>
-          </div>
-        </LandingSection>
-
-        <LandingSection
-          id="security"
-          eyebrow="Ownership and control"
-          title="You own what we build."
-          intro="It becomes part of your business, and your team gets more done with AI built into the workflow."
-          signalState={getSectionSignalState('security', activeSectionId)}
-        >
-          <TrustSurface surface={trustSurface} />
-        </LandingSection>
-
-        <LandingSection
-          id="differentiation"
-          eyebrow="Why this is different"
-          title="Not a chatbot. Not a brittle script."
-          intro="Chat helps with answers. Traditional automation follows fixed steps. 8085 builds intelligent workflows that can use tools, follow business rules, and hand work to people when judgment is needed."
-          tone="contrast"
-          signalState={getSectionSignalState('differentiation', activeSectionId)}
-        >
-          <DifferentiationSplitSurface surface={differentiationSurface} />
-        </LandingSection>
-
+        {/* Section 4: Capabilities */}
         <LandingSection
           id="capabilities"
-          eyebrow="Workflow examples"
-          title="Best for repeatable work your team already knows how to do."
-          intro="If a capable team member can do it repeatedly inside a digital workflow, 8085 can often automate part or all of it."
+          eyebrow="What can be automated"
+          title="If your team can do it repeatedly, 8085 can automate it."
+          intro="Operations, finance, compliance, logistics — any repeatable digital workflow."
+          tone="muted"
           signalState={getSectionSignalState('capabilities', activeSectionId)}
         >
           <CapabilitySceneDeck reducedMotion={prefersReducedMotion} />
         </LandingSection>
 
-        <LandingSection
-          id="proof"
-          eyebrow={proofSurface.eyebrow}
-          title={proofSurface.title}
-          intro={proofSurface.body}
-          tone="muted"
-          signalState={getSectionSignalState('proof', activeSectionId)}
-        >
-          <ResultsSurface surface={proofSurface} />
-        </LandingSection>
-
+        {/* Section 5: Projects */}
         <LandingSection
           id="projects"
           eyebrow={projectsSurface.eyebrow}
@@ -621,6 +553,45 @@ function LandingPage({ onStartConversation }) {
           <ProjectsSurface surface={projectsSurface} />
         </LandingSection>
 
+        {/* Section 6: Trust */}
+        <section
+          id="trust"
+          className="landing-trust-strip landing-section"
+          data-motion-section="trust"
+          data-signal-state={getSectionSignalState('trust', activeSectionId)}
+          aria-label={trustStripSurface.ariaLabel}
+        >
+          <div className="landing-shell landing-section-shell">
+            <div className="landing-section-heading">
+              <p className="landing-eyebrow">Trusted by</p>
+              <h2 id="trust-title">Teams from leading companies.</h2>
+            </div>
+            <div className="landing-trust-strip__inner">
+              <div className="landing-trust-strip__logos" aria-label="Trusted company logos">
+                {trustStripSurface.logos.map((logo) => (
+                  <div key={logo.alt} className="landing-trust-strip__logo">
+                    <img src={logo.src} alt={logo.alt} loading="lazy" />
+                    {logo.context ? <span className="landing-trust-strip__context">{logo.context}</span> : null}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 7: FAQ */}
+        <LandingSection
+          id="faq"
+          eyebrow={faqSurface.eyebrow}
+          title={faqSurface.title}
+          intro={faqSurface.intro}
+          tone="muted"
+          signalState={getSectionSignalState('faq', activeSectionId)}
+        >
+          <FaqSurface surface={faqSurface} />
+        </LandingSection>
+
+        {/* Section 8: CTA */}
         <section
           id="contact"
           className="landing-cta-section"
