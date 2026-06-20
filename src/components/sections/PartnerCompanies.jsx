@@ -60,7 +60,7 @@ const PartnerCompanies = () => {
       {/* Header Section with Equal Height */}
       <div className="partners-header">
         <div className="header-content">
-          <h2 className="section-title">Companies we've proudly worked with</h2>
+          <h2 className="section-title">Companies we&apos;ve proudly worked with</h2>
         </div>
       </div>
       

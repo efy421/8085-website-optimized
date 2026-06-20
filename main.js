@@ -129,8 +129,7 @@ class Circuits {
 			if (dir[0] !== 0 || dir[1] !== 0) {
 				let circuit = new Circuit(start, size),
 					moving = true,
-					path = [start[0], start[1]],
-					coords = [start[0], start[1]];
+					path = [start[0], start[1]];
 				length--;
 
 				while (moving && length) {
@@ -175,8 +174,7 @@ class Circuits {
 		}
 	}
 	getStart() {
-		let found = false,
-			col = null,
+		let col = null,
 			row = null,
 			free = [],
 			result = false;
@@ -312,7 +310,6 @@ class Things {
 	draw() {
 		const ctx = this.ctx,
 			radius = this.lightRadius,
-			diameter = radius * 2,
 			space = radius / 3;
 
 		let radial = null,

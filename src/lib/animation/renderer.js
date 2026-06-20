@@ -139,7 +139,6 @@ export class Renderer {
             
             // Update particles to be aware of new topology
             this.updateParticlesForNewConnections();
-          } else {
           }
         }
       } else if (this.connectionsCreated && this.nearbyCircuits.length <= 1) {
@@ -219,8 +218,6 @@ export class Renderer {
     
     if (connectedCircuits.length < 2) return;
     
-    const addedParticles = [];
-    
     // For each connected circuit, check if it needs more particles
     connectedCircuits.forEach(circuit => {
       // Add 1-2 more particles if the circuit is longer
@@ -231,17 +228,9 @@ export class Renderer {
         const direction = Math.random() > 0.5 ? 1 : -1;
         
         // Add the particle
-        const thing = this.things.create(circuit, speed * direction, randomPosition);
-        addedParticles.push({
-          circuitId: circuit.id,
-          position: randomPosition,
-          speed: speed * direction
-        });
+        this.things.create(circuit, speed * direction, randomPosition);
       }
     });
-    
-    if (addedParticles.length > 0) {
-    }
   }
   
   /**
@@ -249,7 +238,6 @@ export class Renderer {
    */
   visualizeParticleTransitions() {
     const ctx = this.ctx;
-    let transitioningCount = 0;
     
     ctx.save();
     ctx.strokeStyle = '#FF0000';
@@ -258,8 +246,6 @@ export class Renderer {
     
     this.things.collection.forEach(thing => {
       if (thing.transitioning && thing.nextCircuit) {
-        transitioningCount++;
-        
         // Draw path from start to end
         ctx.beginPath();
         ctx.moveTo(thing.startX, thing.startY);
@@ -275,9 +261,6 @@ export class Renderer {
     });
     
     ctx.restore();
-    
-    if (transitioningCount > 0 && Math.random() < 0.05) {
-    }
   }
   
   /**
@@ -411,12 +394,8 @@ export class Renderer {
   updateMousePosition(x, y) {
     // Store the new mouse position
     this.mousePosition = { x, y };
-    this.lastMousePosition = { ...this.mousePosition };  // Keep a copy for reference
+    this.lastMousePosition = { ...this.mousePosition };
     this.isMouseOver = true;
-    
-    // Debug logging (occasional)
-    if (Math.random() < 0.01) {
-    }
   }
   
   /**

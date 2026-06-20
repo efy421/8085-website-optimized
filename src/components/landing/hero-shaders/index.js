@@ -10,7 +10,7 @@ export function getHeroShader(shaderId = defaultHeroShaderId) {
   const shader = heroShaderRegistry[shaderId];
 
   if (!shader) {
-    throw new Error(`Unknown hero shader \"${shaderId}\". Available shaders: ${Object.keys(heroShaderRegistry).join(', ')}`);
+    throw new Error(`Unknown hero shader "${shaderId}". Available shaders: ${Object.keys(heroShaderRegistry).join(', ')}`);
   }
 
   return shader;

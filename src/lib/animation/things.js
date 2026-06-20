@@ -35,8 +35,6 @@ export class Things {
    * Update all things' positions
    */
   update() {
-    // Debug counter to count actual position changes
-    let updatedCount = 0;
     let transitionCount = 0;
     let beforePos = [];
     let afterPos = [];
@@ -57,17 +55,10 @@ export class Things {
     }
     
     this.collection.forEach(thing => {
-      const oldX = thing.x;
-      const oldY = thing.y;
       const wasTransitioning = thing.transitioning;
       
       // Update the particle
       thing.update();
-      
-      // Count particles that actually moved
-      if (oldX !== thing.x || oldY !== thing.y) {
-        updatedCount++;
-      }
       
       // Count particles that are transitioning between circuits
       if (thing.transitioning || wasTransitioning) {

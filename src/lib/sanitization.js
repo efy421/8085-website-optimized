@@ -11,7 +11,7 @@ export const sanitizeText = (input, maxLength = 1000) => {
 export const sanitizeName = (name) => {
   if (!name) return '';
   const clean = sanitizeText(name, 100);
-  return clean.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-\.]/g, '');
+  return clean.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-.]/g, '');
 };
 
 export const sanitizeEmail = (email) => {
@@ -24,7 +24,7 @@ export const sanitizeEmail = (email) => {
 export const sanitizeCompany = (company) => {
   if (!company) return '';
   const clean = sanitizeText(company, 200);
-  return clean.replace(/[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF\s&\-\.\,\(\)\'\"]/g, '');
+  return clean.replace(/[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF\s&\-.,()'"]/g, '');
 };
 
 export const sanitizeQuery = (query) => {
@@ -56,9 +56,9 @@ export const formatSafeDisplayValue = (key, value) => {
 
 // Validation patterns for input checking
 export const VALIDATION_PATTERNS = {
-  name: /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-\.]{1,100}$/,
+  name: /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-.]{1,100}$/,
   email: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  company: /^[a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF\s&\-\.\,\(\)\'\"]{1,200}$/,
+  company: /^[a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF\s&\-.,()'"]{1,200}$/,
   query: /^.{1,2000}$/,
   employeeCount: /^[1-9]\d{0,6}$/
 };

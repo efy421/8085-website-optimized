@@ -201,7 +201,7 @@ export const useVoiceAgent = () => {
 
     try {
       ringSound.play().catch(() => {});
-    } catch {}
+    } catch { /* ignore audio play errors */ }
 
     for (let attempt = 1; attempt <= maxRetries; attempt += 1) {
       try {

@@ -41,7 +41,7 @@ const MeetTheFounders = () => {
         </div>
 
         <div className="founders-profiles">
-          {founders.map((founder, index) => (
+          {founders.map((founder, _index) => (
             <div 
               key={founder.name}
               className="founder-profile"
@@ -59,7 +59,7 @@ const MeetTheFounders = () => {
                 
                 <div className="founder-info">
                   <blockquote className="founder-quote">
-                    "{founder.quote}"
+                    &quot;{founder.quote}&quot;
                   </blockquote>
                   
                   <div className="founder-details">

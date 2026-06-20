@@ -2,8 +2,7 @@
  * Centralized Error Handler - Task 7.8
  */
 
-import { ErrorTypes, UserMessages, ErrorSeverityMap } from './errorTypes.js';
-import { log } from '../logger.js';
+import { ErrorTypes, UserMessages, ErrorSeverityMap, ErrorSeverity } from './errorTypes.js';
 
 class ErrorHandler {
   constructor() {
@@ -51,7 +50,7 @@ class ErrorHandler {
     return { type: ErrorTypes.UNKNOWN_ERROR, originalError: error };
   }
 
-  sanitizeError(errorInfo, metadata) {
+  sanitizeError(errorInfo, _metadata) {
     const id = this.generateErrorId();
     const severity = ErrorSeverityMap[errorInfo.type] || ErrorSeverity.HIGH;
     

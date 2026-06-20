@@ -76,6 +76,7 @@ const SoundWaveAnimation = ({ isActive, className = '' }) => {
       if (animationTimeline) {
         animationTimeline.kill();
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       gsap.killTweensOf(containerRef.current);
       gsap.killTweensOf(bars);
     };

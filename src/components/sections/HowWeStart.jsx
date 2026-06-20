@@ -48,7 +48,7 @@ const HowWeStart = () => {
       </div>
       
       <div className="workflow-grid">
-        {steps.map((step, index) => (
+        {steps.map((step, _index) => (
           <div key={step.id} className={`workflow-card workflow-card-${step.color} workflow-${step.position}`}>
             <div className="workflow-number">{step.number}</div>
             <div className="workflow-content">

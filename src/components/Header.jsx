@@ -439,7 +439,7 @@ const Header = () => {
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
       >
-        <span>Let's Talk</span>
+        <span>Let&apos;s Talk</span>
         <svg 
           ref={arrowRef}
           xmlns="http://www.w3.org/2000/svg" 

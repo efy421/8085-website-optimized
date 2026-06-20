@@ -173,7 +173,7 @@ function FoundersSurface({ surface }) {
             </div>
             <div className="landing-founder-card__content">
               <blockquote className="landing-founder-card__quote">
-                "{founder.quote}"
+                &quot;{founder.quote}&quot;
               </blockquote>
               <div className="landing-founder-card__details">
                 <span className="landing-founder-card__name">— {founder.name}</span>
@@ -221,12 +221,10 @@ function ProjectsSurface({ surface }) {
                 <strong>Result:</strong> {project.result}
               </p>
             </div>
-            <div className="landing-project-card__footer">
-              <div className="landing-project-card__metric">{project.metric}</div>
-              <a className="landing-project-card__cta" href={founderHref} target="_blank" rel="noreferrer">
-                Talk to us about this →
-              </a>
-            </div>
+            <div className="landing-project-card__metric">{project.metric}</div>
+            <a className="landing-project-card__cta" href={founderHref} target="_blank" rel="noreferrer">
+              Talk to us about this →
+            </a>
           </article>
         ))}
       </div>
@@ -515,7 +513,7 @@ function LandingPage({ onStartConversation }) {
               </div>
 
               <h1 id="hero-title" ref={titleRef}>
-                Automate your team's repeatable work and grow output without headcount.
+                Automate your team&apos;s repeatable work and grow output without headcount.
               </h1>
 
               <p className="landing-hero-intro" ref={introRef}>

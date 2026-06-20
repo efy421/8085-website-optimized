@@ -127,7 +127,6 @@ export class Circuits {
         let circuit = new Circuit(start, size);
         let moving = true;
         let path = [start[0], start[1]];
-        let coords = [start[0], start[1]];
         length--;
 
         // Build the path
@@ -361,7 +360,6 @@ export class Circuits {
                 end1Key,
                 end2Key
               });
-            } else {
             }
           }
         }
@@ -430,8 +428,6 @@ export class Circuits {
    * @param {Circuit} circuit2 - Second circuit
    */
   createCircuitConnections(circuit1, circuit2) {
-    const size = this.cellSize;
-    
     // Add circuit references
     circuit1.connections.push(circuit2);
     circuit2.connections.push(circuit1);
@@ -465,8 +461,6 @@ export class Circuits {
    * @param {number} segmentIndex2 - Segment index in second circuit
    */
   addConnectionPoint(circuit1, circuit2, segmentIndex1, segmentIndex2) {
-    const size = this.cellSize;
-    
     // Get coordinates for segment in circuit1
     let point1;
     if (segmentIndex1 === 0) {
@@ -539,29 +533,21 @@ export class Circuits {
     
     if (connectedCircuits.length < 2) return;
     
-    // Count particles on connected circuits
-    let particlesOnConnectedCircuits = 0;
-    
     // Notify each particle on connected circuits
     connectedCircuits.forEach(circuit => {
       circuit.things.forEach(thing => {
         // Particle is now aware that its circuit is connected
         if (!thing.onConnectedCircuit) {
           thing.onConnectedCircuit = true;
-          particlesOnConnectedCircuits++;
         }
       });
     });
-    
   }
   
   /**
    * Disconnect all connected circuits
    */
   disconnectAllCircuits() {
-    // Count connected circuits before disconnection
-    const connectedBefore = this.collection.filter(circuit => circuit.isConnected).length;
-    
     // Stop any active particle transitions
     this.stopParticleTransitions();
     
@@ -571,20 +557,12 @@ export class Circuits {
         circuit.restoreOriginalState();
       }
     });
-    
-    // Count connected circuits after disconnection
-    const connectedAfter = this.collection.filter(circuit => circuit.isConnected).length;
-    if (connectedBefore > 0) {
-    }
   }
   
   /**
    * Stop any in-progress particle transitions between circuits
    */
   stopParticleTransitions() {
-    // Find all particles that are currently transitioning
-    let transitioningCount = 0;
-    
     this.collection.forEach(circuit => {
       if (circuit.isConnected) {
         // Check each particle on this circuit
@@ -592,7 +570,6 @@ export class Circuits {
           if (thing.transitioning) {
             // Stop the transition and keep the particle on its current circuit
             thing.cancelTransition();
-            transitioningCount++;
           }
           
           // Reset connected circuit flag

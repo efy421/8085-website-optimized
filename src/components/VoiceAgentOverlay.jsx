@@ -145,11 +145,12 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
     }
     
     setLastDataUpdate({...voiceAgent.collectedData});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceAgent.collectedData, voiceAgent.hasCollectedData]);
 
   // Helper function to get user-visible data (exclude conversationId)
   const getUserVisibleData = () => {
-    const { conversationId, ...visibleData } = voiceAgent.collectedData;
+    const { conversationId: _conversationId, ...visibleData } = voiceAgent.collectedData;
     return visibleData;
   };
 
@@ -210,11 +211,11 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
         conversationDuration: voiceAgent.getConversationDuration()
       };
 
-      const result = await submitToWebhook(voiceAgent.collectedData, {
+      await submitToWebhook(voiceAgent.collectedData, {
         onProgress: (message) => {
           setWebhookState(prev => ({ ...prev, submissionMessage: message }));
         },
-        onRetry: (attempt, error) => {
+        onRetry: (attempt, _error) => {
           setWebhookState(prev => ({ 
             ...prev, 
             submissionMessage: `Retrying... (attempt ${attempt})` 
@@ -269,7 +270,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
   };
 
   // Show result animation (success or error)
-  const showResultAnimation = (isSuccess) => {
+  const showResultAnimation = (_isSuccess) => {
     // Just set the state - the JSX will handle the rendering
     setWebhookState(prev => ({
       ...prev,
@@ -328,6 +329,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const requestOverlayClose = async (reason = ConversationEndReason.USER_CLOSED) => {
     await handlePrematureClose(reason);
     onClose();
@@ -347,6 +349,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
     };
 
     handleConversationEnd();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [voiceAgent.conversationState.hasEnded, voiceAgent.conversationState.isActive]);
 
   // Handle browser/tab close events
@@ -401,6 +404,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
         window.removeEventListener('beforeunload', handleBeforeUnload);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible, voiceAgent.isInitialized, voiceAgent.hasEmailForSubmission, voiceAgent.collectedData]);
   const handleStartConversation = async () => {
     if (!consentState.hasConsented) {
@@ -482,6 +486,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
     setCaptchaState(createInitialCaptchaState());
     setShowPrivacyDetails(false);
     setLastDataUpdate(null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isVisible, voiceAgent.resetCollectedData]);
 
   useEffect(() => {
@@ -823,7 +828,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
                       </svg>
                       <p>Information will appear here as we chat...</p>
                       <div className="expected-info">
-                        <span>I'll collect: Name • Email • Company • Team Size • Your Question</span>
+                        <span>I&apos;ll collect: Name • Email • Company • Team Size • Your Question</span>
                       </div>
                     </div>
                   )}
@@ -931,7 +936,7 @@ const VoiceAgentOverlay = ({ isVisible, onClose }) => {
           {/* Footer */}
           <div className="voice-agent-footer">
             <p className="privacy-note">
-              Your conversation is private and secure. We'll only use the information to help you.
+              Your conversation is private and secure. We&apos;ll only use the information to help you.
             </p>
           </div>
         </div>

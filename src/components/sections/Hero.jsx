@@ -137,6 +137,7 @@ const Hero = () => {
 
     const interval = setInterval(morphToNext, 4000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentVertical]);
 
   return (
@@ -152,7 +153,7 @@ const Hero = () => {
         </h1>
         
         <h2 className="hero-subheading" ref={subheadingRef}>
-          Whether you're a <span 
+          Whether you&apos;re a <span 
             ref={verticalTextRef}
             className="highlight vertical-text" 
             style={{color: verticals[currentVertical].color}}
@@ -172,7 +173,7 @@ const Hero = () => {
         </div>
         
         <p className="hero-tagline">
-          We connect the <span className="dots-text">dots</span> others can't see, turn your biggest operational 
+          We connect the <span className="dots-text">dots</span> others can&apos;t see, turn your biggest operational 
           bottlenecks into competitive advantages through <span className="highlight-yellow">intelligent agentic systems</span>.
         </p>
 

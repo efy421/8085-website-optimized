@@ -64,7 +64,7 @@ const getClientId = (event) => {
 };
 
 // Proxy function for ElevenLabs Conversational AI
-export async function handler(event, context) {
+export async function handler(event, _context) {
   // Handle CORS preflight
   if (event.httpMethod === 'OPTIONS') {
     return {

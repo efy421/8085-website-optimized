@@ -18,7 +18,7 @@ function checkRateLimit(ip) {
   return data.count <= MAX_CONVERSATIONS_PER_HOUR;
 }
 
-export const handler = async (event, context) => {
+export const handler = async (event, _context) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }

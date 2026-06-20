@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import '../../styles/whoweare.css';
 
 const WhoWeAre = () => {
-  const sectionRef = useRef(null);
   const expertiseRef = useRef(null);
   const solutionsRef = useRef(null);
   const principleRef = useRef(null);
@@ -29,8 +28,11 @@ const WhoWeAre = () => {
     if (principleRef.current) observer.observe(principleRef.current);
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (expertiseRef.current) observer.unobserve(expertiseRef.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (solutionsRef.current) observer.unobserve(solutionsRef.current);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (principleRef.current) observer.unobserve(principleRef.current);
     };
   }, []);
@@ -69,7 +71,7 @@ const WhoWeAre = () => {
           <div className="card-text-content">
             <h3 className="card-title">Solutions Without Technology Limitations</h3>
             <p className="card-text">
-              Your challenges aren't confined to a single technology, so neither are our solutions. 
+              Your challenges aren&apos;t confined to a single technology, so neither are our solutions. 
               From mobile to AI, from web to spreadsheets to complex agent systems – we follow your 
               problem wherever it leads. Your solution matters, not our preferred tools.
             </p>

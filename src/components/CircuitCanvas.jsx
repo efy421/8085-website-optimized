@@ -35,7 +35,7 @@ const CircuitCanvas = () => {
 
     // Initialize the animation
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
+    canvas.getContext('2d');
 
     // Set canvas size
     canvas.width = window.innerWidth;
@@ -187,6 +187,7 @@ const CircuitCanvas = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Apply config changes
@@ -212,6 +213,7 @@ const CircuitCanvas = () => {
       // When renderer is first created or changed, immediately update with current position
       renderer.updateMousePosition(mousePosition.x, mousePosition.y);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderer]);
 
   return (

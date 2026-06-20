@@ -1,11 +1,10 @@
 // Secure Webhook Proxy - Task 7.2
-const crypto = require('crypto');
 
 const WEBHOOK_URL = process.env.WEBHOOK_URL;
 const PROXY_SECRET = process.env.PROXY_SECRET;
 const rateLimitStore = new Map();
 
-export const handler = async (event, context) => {
+export const handler = async (event, _context) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }

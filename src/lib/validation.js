@@ -17,7 +17,7 @@ export const validateName = (name) => {
   const errors = [];
   if (clean.length < LIMITS.NAME.min) errors.push(error('LENGTH', 'name', 'Name too short'));
   if (clean.length > LIMITS.NAME.max) errors.push(error('LENGTH', 'name', 'Name too long'));
-  if (!/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-\.]+$/.test(clean)) errors.push(error('FORMAT', 'name', 'Invalid characters'));
+  if (!/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s'\-.]+$/.test(clean)) errors.push(error('FORMAT', 'name', 'Invalid characters'));
   return { valid: !errors.length, errors, value: !errors.length ? clean : null };
 };
 
