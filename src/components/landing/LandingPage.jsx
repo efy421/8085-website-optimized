@@ -519,22 +519,16 @@ function LandingPage({ onStartConversation }) {
                 ))}
               </ul>
 
-              {isMobileViewport ? (
-                <div className="landing-hero-actions landing-hero-actions--mobile" ref={actionsRef}>
-                  <a className="landing-founder-button" href={founderHref} target="_blank" rel="noreferrer">
-                    {mobileWorkflowReviewLabel}
-                  </a>
-                </div>
-              ) : (
-                <div className="landing-hero-actions landing-hero-actions--desktop" ref={actionsRef}>
-                  <a className="landing-founder-button" href={founderHref} target="_blank" rel="noreferrer">
-                    Book Strategy Call
-                  </a>
+              <div className="landing-hero-actions landing-hero-actions--desktop" ref={actionsRef}>
+                <a className="landing-founder-button" href={founderHref} target="_blank" rel="noreferrer">
+                  Book Strategy Call
+                </a>
+                {!isMobileViewport ? (
                   <button type="button" className="landing-secondary-button" onClick={onStartConversation}>
                     Talk to Agent Ada
                   </button>
-                </div>
-              )}
+                ) : null}
+              </div>
             </div>
           </div>
         </section>
