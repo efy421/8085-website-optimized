@@ -37,7 +37,7 @@ describe('Sprint 4 differentiation and trust layers', () => {
   it('stores the later proof, trust strip, and workflow story as structured data', () => {
     expect(proofSurface.cards).toHaveLength(3);
     expect(proofSurface.cards.map((card) => card.value)).toEqual(['80%', 'Same team', '5x']);
-    expect(trustStripSurface.logos).toHaveLength(6);
+    expect(trustStripSurface.logos).toHaveLength(10);
     expect(workflowStorySurface.cards.map((card) => card.label)).toEqual(['Before', 'With 8085', 'After']);
   });
 

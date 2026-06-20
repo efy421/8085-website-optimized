@@ -74,7 +74,7 @@ describe('Sprint 6 hardening and polish', () => {
 
     expect(container.querySelector('#problems-title')).toHaveTextContent(/your team is stuck in repeatable work\./i);
 
-    expect(within(trustSection).getAllByRole('img')).toHaveLength(6);
+    expect(within(trustSection).getAllByRole('img')).toHaveLength(10);
 
     fireEvent.click(heroQueries.getByRole('button', { name: /talk to agent ada/i }));
     expect(onStartConversation).toHaveBeenCalledTimes(1);

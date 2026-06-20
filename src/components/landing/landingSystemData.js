@@ -358,12 +358,16 @@ export const trustStripSurface = {
   ariaLabel: 'Trusted company logos',
   label: 'Trusted by teams from',
   logos: [
-    { src: '/images/partners-logo-audi.svg', alt: 'Audi — Workflow automation', context: 'Workflow automation', outcome: 'Automated multi-step approval chains' },
-    { src: '/images/partners-logo-dhl.svg', alt: 'DHL — Process optimization', context: 'Process optimization', outcome: 'Reduced manual handling in logistics ops' },
-    { src: '/images/partners-logo-ci.webp', alt: 'Cologne Intelligence — Enterprise AI', context: 'Enterprise AI', outcome: 'Scaled AI across business units' },
-    { src: '/images/partners-logo-bayer.svg', alt: 'Bayer — Operations scaling', context: 'Operations scaling', outcome: 'Faster batch processing without headcount' },
-    { src: '/images/partners-logo-mubea.svg', alt: 'Mubea — Cost reduction', context: 'Cost reduction', outcome: 'Cut operational overhead on repeat tasks' },
-    { src: '/images/partners-logo-postbank.svg', alt: 'Postbank — Compliance workflow', context: 'Compliance workflow', outcome: 'Streamlined audit-ready documentation' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-audi.svg`, alt: 'Audi — Workflow automation', context: 'Workflow automation', outcome: 'Automated multi-step approval chains' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-dhl.svg`, alt: 'DHL — Process optimization', context: 'Process optimization', outcome: 'Reduced manual handling in logistics ops' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-ci.webp`, alt: 'Cologne Intelligence — Enterprise AI', context: 'Enterprise AI', outcome: 'Scaled AI across business units' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-bayer.svg`, alt: 'Bayer — Operations scaling', context: 'Operations scaling', outcome: 'Faster batch processing without headcount' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-mubea.svg`, alt: 'Mubea — Cost reduction', context: 'Cost reduction', outcome: 'Cut operational overhead on repeat tasks' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-postbank.svg`, alt: 'Postbank — Compliance workflow', context: 'Compliance workflow', outcome: 'Streamlined audit-ready documentation' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-pixum.png`, alt: 'Pixum — Print automation', context: 'Print automation', outcome: 'Automated order processing workflows' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-dp.svg`, alt: 'Deutsche Post — Mail operations', context: 'Mail operations', outcome: 'Streamlined mail sorting and routing' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-ifbag.svg`, alt: 'ifb Group — Consulting automation', context: 'Consulting automation', outcome: 'Automated client reporting workflows' },
+    { src: `${import.meta.env.BASE_URL}images/partners-logo-abb.svg`, alt: 'ABB — Industrial automation', context: 'Industrial automation', outcome: 'Connected plant operations data' },
   ],
 };
 
@@ -492,6 +496,39 @@ export const faqSurface = {
   ],
 };
 
+export const foundersSurface = {
+  ariaLabel: 'Meet the founders',
+  eyebrow: 'Team',
+  title: 'The people behind 8085.',
+  intro: 'Three brothers who started solving problems for local businesses in Lahore, Pakistan — now helping multinational corporations tackle their biggest challenges.',
+  founders: [
+    {
+      id: 'farhan',
+      name: 'Farhan Shamim',
+      title: 'CTO',
+      image: `${import.meta.env.BASE_URL}images/founder-profileimage-farhan.jpg`,
+      quote: "The future isn't about clicking through endless interfaces — it's about having conversations with intelligent systems that understand us completely.",
+      linkedin: 'https://linkedin.com/in/farhanshamim',
+    },
+    {
+      id: 'sameer',
+      name: 'Sameer Shamim',
+      title: 'COO',
+      image: `${import.meta.env.BASE_URL}images/founder-profileimage-sameer.jpg`,
+      quote: "We're witnessing AI's transformation from unpredictable to reliable. These systems will handle the complexities that have held businesses back for decades.",
+      linkedin: 'https://linkedin.com/in/sameershamim',
+    },
+    {
+      id: 'essam',
+      name: 'Essam Shamim',
+      title: 'CMO',
+      image: `${import.meta.env.BASE_URL}images/founder-profileimage-essam.jpg`,
+      quote: "The companies that will dominate tomorrow aren't building bigger databases — they're building faster thinking. Success belongs to whoever can turn insight into action.",
+      linkedin: 'https://linkedin.com/in/essamshamim',
+    },
+  ],
+};
+
 export const motionSections = [
   {
     id: 'hero',
@@ -569,6 +606,17 @@ export const motionSections = [
     ],
     accent: '#cf7c45',
     glow: 'rgba(207, 124, 69, 0.28)',
+  },
+  {
+    id: 'founders',
+    label: 'Team',
+    relay: 'Founders',
+    narration: [
+      'The people behind 8085.',
+      'Three brothers building the future of work.',
+    ],
+    accent: '#8f8ae4',
+    glow: 'rgba(143, 138, 228, 0.3)',
   },
   {
     id: 'contact',

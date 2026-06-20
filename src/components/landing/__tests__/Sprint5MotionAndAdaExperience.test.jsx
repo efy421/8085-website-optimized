@@ -101,7 +101,7 @@ describe('Sprint 5 motion integration and Ada experience', () => {
   });
 
   it('stores sprint 5 motion and contact surfaces as structured data', () => {
-    expect(motionSections).toHaveLength(8);
+    expect(motionSections).toHaveLength(9);
     expect(motionSections.slice(0, 4).map((section) => section.id)).toEqual([
       'hero',
       'problems',

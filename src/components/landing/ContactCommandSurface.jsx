@@ -63,7 +63,7 @@ function ContactCommandSurface({
 
         <div className="landing-cta-ada-body">
           <div className="landing-ada-avatar-shell">
-            <img src="/images/contact-avatar-chloe.png" alt="Ada AI assistant avatar" loading="lazy" />
+            <img src={`${import.meta.env.BASE_URL}images/contact-avatar-chloe.png`} alt="Ada AI assistant avatar" loading="lazy" />
           </div>
           <p>{surface.panelBody}</p>
         </div>

@@ -8,6 +8,7 @@ import MobileContactDock from './MobileContactDock';
 import {
   contactSurface,
   faqSurface,
+  foundersSurface,
   motionSections,
   problemsSurface,
   projectsSurface,
@@ -156,6 +157,44 @@ function FaqSurface({ surface }) {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function FoundersSurface({ surface }) {
+  return (
+    <div className="landing-founders-surface" aria-label={surface.ariaLabel}>
+      <div className="landing-founders-grid">
+        {surface.founders.map((founder) => (
+          <article key={founder.id} className="landing-founder-card">
+            <div className="landing-founder-card__image-shell">
+              <img src={founder.image} alt={`${founder.name} — ${founder.title}`} loading="lazy" />
+            </div>
+            <div className="landing-founder-card__content">
+              <blockquote className="landing-founder-card__quote">
+                "{founder.quote}"
+              </blockquote>
+              <div className="landing-founder-card__details">
+                <span className="landing-founder-card__name">— {founder.name}</span>
+                <div className="landing-founder-card__title-row">
+                  <span className="landing-founder-card__title">{founder.title}</span>
+                  <a
+                    href={founder.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="landing-founder-card__linkedin"
+                    aria-label={`Connect with ${founder.name} on LinkedIn`}
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </div>
   );
@@ -432,6 +471,9 @@ function LandingPage({ onStartConversation }) {
             <a href="#faq" aria-current={activeSectionId === 'faq' ? 'location' : undefined}>
               FAQ
             </a>
+            <a href="#founders" aria-current={activeSectionId === 'founders' ? 'location' : undefined}>
+              Team
+            </a>
             <a href="#contact" aria-current={activeSectionId === 'contact' ? 'location' : undefined}>
               Contact
             </a>
@@ -604,7 +646,18 @@ function LandingPage({ onStartConversation }) {
           <FaqSurface surface={faqSurface} />
         </LandingSection>
 
-        {/* Section 8: CTA */}
+        {/* Section 8: Founders */}
+        <LandingSection
+          id="founders"
+          eyebrow={foundersSurface.eyebrow}
+          title={foundersSurface.title}
+          intro={foundersSurface.intro}
+          signalState={getSectionSignalState('founders', activeSectionId)}
+        >
+          <FoundersSurface surface={foundersSurface} />
+        </LandingSection>
+
+        {/* Section 9: CTA */}
         <section
           id="contact"
           className="landing-cta-section"
