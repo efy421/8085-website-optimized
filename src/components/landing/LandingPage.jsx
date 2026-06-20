@@ -182,7 +182,12 @@ function ProjectsSurface({ surface }) {
                 <strong>Result:</strong> {project.result}
               </p>
             </div>
-            <div className="landing-project-card__metric">{project.metric}</div>
+            <div className="landing-project-card__footer">
+              <div className="landing-project-card__metric">{project.metric}</div>
+              <a className="landing-project-card__cta" href={founderHref} target="_blank" rel="noreferrer">
+                Talk to us about this →
+              </a>
+            </div>
           </article>
         ))}
       </div>
@@ -491,6 +496,10 @@ function LandingPage({ onStartConversation }) {
                   </button>
                 ) : null}
               </div>
+
+              <p className="landing-hero-trust-indicator">
+                Trusted by teams from Audi, DHL, Bayer, Postbank & more
+              </p>
             </div>
           </div>
         </section>
@@ -564,7 +573,10 @@ function LandingPage({ onStartConversation }) {
           <div className="landing-shell landing-section-shell">
             <div className="landing-section-heading">
               <p className="landing-eyebrow">Trusted by</p>
-              <h2 id="trust-title">Teams from leading companies.</h2>
+              <h2 id="trust-title">Real outcomes for real teams.</h2>
+              <p className="landing-intro" id="trust-intro">
+                60% faster approvals at Audi. 70% less manual handling at DHL. 3x more batches at Bayer.
+              </p>
             </div>
             <div className="landing-trust-strip__inner">
               <div className="landing-trust-strip__logos" aria-label="Trusted company logos">
