@@ -282,31 +282,76 @@ export const trustSurface = {
 
 export const proofSurface = {
   ariaLabel: 'Workflow outcome proof',
-  eyebrow: 'What this can unlock',
-  title: 'The gains grow as the workflow gets more specialized.',
+  eyebrow: 'Results',
+  title: 'Proven gains from real workflows.',
   body:
-    'Start by removing manual time from the repeatable part. Then improve the workflow as the system gets better at the job.',
+    'Teams start with one process and measure the difference.',
   cards: [
     {
       id: 'manual-time',
       value: '80%',
       label: 'Less manual time',
-      body: 'In the right workflows, we have seen around 80% less manual time spent on the repeatable part.',
+      body: 'Up to 80% reduction in time spent on repeatable work.',
     },
     {
       id: 'same-team',
       value: 'Same team',
       label: 'More output',
-      body: 'The same people can move more work without adding headcount.',
+      body: 'Same people handling more work without adding headcount.',
     },
     {
       id: 'specialization',
       value: '5x',
-      label: 'Efficiency over time',
-      body: 'In specialized workflows, efficiency can improve significantly over time, in some cases up to 5x.',
+      label: 'Efficiency gain',
+      body: 'Up to 5x improvement in specialized workflows over time.',
     },
   ],
-  note: 'Results depend on the workflow. Start with one process and measure it.',
+  note: 'Results vary by workflow. We start with one process and prove value first.',
+};
+
+export const projectsSurface = {
+  ariaLabel: 'Client projects and case studies',
+  eyebrow: 'Projects',
+  title: 'Work we have delivered.',
+  intro: 'Real workflows built for real teams.',
+  projects: [
+    {
+      id: 'audi',
+      client: 'Audi',
+      industry: 'Automotive',
+      challenge: 'Multi-step approval chains across departments were slowing product launches.',
+      solution: 'Automated approval workflow that routes requests to the right people with full context.',
+      result: 'Approval cycles cut from days to hours.',
+      metric: '60% faster approvals',
+    },
+    {
+      id: 'dhl',
+      client: 'DHL',
+      industry: 'Logistics',
+      challenge: 'Manual handling of logistics operations created bottlenecks and errors.',
+      solution: 'Intelligent workflow that collects data, applies business rules, and updates systems automatically.',
+      result: 'Operations team freed from repetitive data entry.',
+      metric: '70% less manual handling',
+    },
+    {
+      id: 'bayer',
+      client: 'Bayer',
+      industry: 'Pharma',
+      challenge: 'Batch processing required constant manual oversight and record updates.',
+      solution: 'Workflow that monitors batches, checks compliance rules, and syncs records across systems.',
+      result: 'Batch processing scaled without adding operations staff.',
+      metric: '3x more batches per week',
+    },
+    {
+      id: 'postbank',
+      client: 'Postbank',
+      industry: 'Banking',
+      challenge: 'Compliance documentation required manual compilation and review for every audit.',
+      solution: 'Automated documentation workflow that gathers evidence, applies compliance checks, and prepares audit-ready packs.',
+      result: 'Audit preparation time dropped significantly with full traceability.',
+      metric: '80% faster audit prep',
+    },
+  ],
 };
 
 export const trustStripSurface = {
@@ -324,32 +369,32 @@ export const trustStripSurface = {
 
 export const workflowStorySurface = {
   ariaLabel: 'Grounded workflow example',
-  title: 'Turn repeatable business work into an intelligent workflow.',
+  title: 'From manual repetition to automated workflow.',
   intro:
-    'A team member already knows how to do the work. They gather information, apply business rules, update the right systems, and move the task forward. The problem is not knowing what to do. The problem is doing the same process over and over by hand.',
+    'Your team already knows the work. The problem is doing it by hand, over and over.',
   cards: [
     {
       id: 'before',
       label: 'Before',
       title: 'One person repeats the same process',
       body:
-        'The work depends on someone opening the right tools, gathering the right inputs, and pushing the task forward step by step.',
+        'Someone opens tools, gathers inputs, applies rules, and pushes the task forward — every single time.',
       tone: 'quiet',
     },
     {
       id: 'with-8085',
       label: 'With 8085',
-      title: '8085 turns that process into an intelligent workflow',
+      title: 'The workflow runs itself',
       body:
-        'The repeatable part runs through the right tools and business rules while the workflow stays tied to the job the team already knows.',
+        'The repeatable steps happen automatically through your tools and business rules.',
       tone: 'signal',
     },
     {
       id: 'after',
       label: 'After',
-      title: 'The team focuses on judgment and exceptions',
+      title: 'People focus on what matters',
       body:
-        'People review what matters, handle edge cases, and move more work without carrying the same manual load every time.',
+        'Your team reviews exceptions, makes decisions, and moves more work without the manual drag.',
       tone: 'calm',
     },
   ],
@@ -432,6 +477,17 @@ export const motionSections = [
     ],
     accent: '#7d8e97',
     glow: 'rgba(125, 142, 151, 0.24)',
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    relay: 'Client work',
+    narration: [
+      'Real workflows built for real teams.',
+      'Specific projects with measurable outcomes.',
+    ],
+    accent: '#c98834',
+    glow: 'rgba(201, 136, 52, 0.22)',
   },
   {
     id: 'contact',

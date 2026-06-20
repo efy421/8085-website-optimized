@@ -47,6 +47,6 @@ describe('Sprint 4 differentiation and trust layers', () => {
     expect(trustSurface.lead.bullets).toHaveLength(3);
     expect(trustSurface.rails).toHaveLength(4);
     expect(trustSurface.lead.badges).toHaveLength(4);
-    expect(proofSurface.note).toMatch(/results depend on the workflow/i);
+    expect(proofSurface.note).toMatch(/results vary by workflow/i);
   });
 });

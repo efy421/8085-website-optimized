@@ -88,24 +88,20 @@ describe('Sprint 5 motion integration and Ada experience', () => {
     expect(screen.getByText(/get to a clear first step\./i)).toBeInTheDocument();
     expect(screen.getByText(/one workflow first/i)).toBeInTheDocument();
     expect(screen.getByText(/describe the workflow/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /book founder call/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /book strategy call/i })).toHaveAttribute(
       'href',
       'https://calendly.com/f-shamim/client-call',
     );
     expect(screen.getByRole('button', { name: /talk to agent ada/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /open ada conversation/i })).toBeInTheDocument();
     expect(screen.getByText(/^ready$/i)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /request workflow review/i })).toHaveAttribute(
-      'href',
-      'mailto:test@example.com',
-    );
 
     fireEvent.click(screen.getByRole('button', { name: /open ada conversation/i }));
     expect(onStartConversation).toHaveBeenCalledTimes(1);
   });
 
   it('stores sprint 5 motion and contact surfaces as structured data', () => {
-    expect(motionSections).toHaveLength(8);
+    expect(motionSections).toHaveLength(9);
     expect(motionSections.slice(0, 4).map((section) => section.id)).toEqual([
       'hero',
       'workflow-story',
@@ -117,6 +113,6 @@ describe('Sprint 5 motion integration and Ada experience', () => {
     });
     expect(contactSurface.signals).toHaveLength(3);
     expect(contactSurface.steps).toHaveLength(3);
-    expect(contactSurface.notes).toHaveLength(3);
+    expect(contactSurface.notes).toHaveLength(2);
   });
 });

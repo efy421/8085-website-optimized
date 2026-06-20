@@ -19,7 +19,7 @@ vi.mock('../TrustSurface', () => ({
 }));
 
 vi.mock('../LandingMotionSpine', () => ({
-  default: () => <aside data-testid="motion-spine" />,
+  default: () => null,
 }));
 
 vi.mock('../ContactCommandSurface', () => ({
@@ -73,32 +73,28 @@ describe('Sprint 6 hardening and polish', () => {
     expect(screen.getByRole('main')).toHaveAttribute('tabindex', '-1');
     expect(heroQueries.getByText(/^AI for real business workflows$/i)).toBeInTheDocument();
     expect(
-      heroQueries.getByRole('heading', { name: /ai for the workflows your business already runs\./i }),
+      heroQueries.getByRole('heading', { name: /automate your team's repeatable work and grow output without headcount\./i }),
     ).toBeInTheDocument();
     expect(
       heroQueries.getByText(
-        /8085 turns repeatable multi-step work into intelligent workflows, so your team can grow output without adding headcount\./i,
+        /8085 automates the repeatable work your team already does\. same people\. more output\. less manual drag\./i,
       ),
     ).toBeInTheDocument();
     expect(heroQueries.getByText(/start with one workflow/i)).toBeInTheDocument();
     expect(heroQueries.getByText(/built around your process/i)).toBeInTheDocument();
-    expect(heroQueries.getByText(/you own what we build/i)).toBeInTheDocument();
-    expect(heroQueries.getByRole('link', { name: /book founder call/i })).toHaveAttribute(
+    expect(heroQueries.getByText(/you keep ownership/i)).toBeInTheDocument();
+    expect(heroQueries.getByRole('link', { name: /book strategy call/i })).toHaveAttribute(
       'href',
       'https://calendly.com/f-shamim/client-call',
     );
-    expect(heroQueries.getByRole('link', { name: /book founder call/i })).toHaveAttribute('target', '_blank');
+    expect(heroQueries.getByRole('link', { name: /book strategy call/i })).toHaveAttribute('target', '_blank');
     expect(heroQueries.getByRole('button', { name: /talk to agent ada/i })).toBeInTheDocument();
-    expect(heroQueries.getByRole('link', { name: /request workflow review/i })).toHaveAttribute(
-      'href',
-      'mailto:ada@8085.ai?subject=8085%20Workflow%20Review',
-    );
 
     expect(within(trustStrip).getByText(/trusted by teams from/i)).toBeInTheDocument();
     expect(within(trustStrip).getAllByRole('img')).toHaveLength(6);
 
     expect(container.querySelector('#workflow-story-title')).toHaveTextContent(
-      /turn repeatable business work into an intelligent workflow\./i,
+      /from manual repetition to automated workflow\./i,
     );
     expect(within(workflowStorySection).getByText(/^before$/i)).toBeInTheDocument();
     expect(within(workflowStorySection).getByText(/^with 8085$/i)).toBeInTheDocument();
@@ -123,28 +119,22 @@ describe('Sprint 6 hardening and polish', () => {
     const heroQueries = within(heroSection);
 
     expect(container.querySelector('.landing-header-actions')).not.toBeInTheDocument();
-    expect(heroQueries.getByRole('button', { name: /start a workflow review/i })).toBeInTheDocument();
-    expect(heroQueries.queryByRole('link', { name: /book founder call/i })).not.toBeInTheDocument();
+    expect(heroQueries.getByRole('link', { name: /book strategy call/i })).toBeInTheDocument();
     expect(heroQueries.queryByRole('button', { name: /talk to agent ada/i })).not.toBeInTheDocument();
-    expect(heroQueries.queryByRole('link', { name: /request workflow review/i })).not.toBeInTheDocument();
 
-    fireEvent.click(heroQueries.getByRole('button', { name: /start a workflow review/i }));
+    fireEvent.click(dockTrigger);
 
-    const dialog = screen.getByRole('dialog', { name: /start a workflow review/i });
+    const dialog = screen.getByRole('dialog', { name: /book strategy call/i });
     const dialogQueries = within(dialog);
 
-    expect(dialogQueries.getByRole('link', { name: /book founder call/i })).toHaveAttribute(
+    expect(dialogQueries.getByRole('link', { name: /book strategy call/i })).toHaveAttribute(
       'href',
       'https://calendly.com/f-shamim/client-call',
     );
     expect(dialogQueries.getByRole('button', { name: /talk to agent ada/i })).toBeInTheDocument();
-    expect(dialogQueries.getByRole('link', { name: /request workflow review/i })).toHaveAttribute(
-      'href',
-      'mailto:ada@8085.ai?subject=8085%20Workflow%20Review',
-    );
 
     fireEvent.keyDown(document, { key: 'Escape' });
-    expect(screen.queryByRole('dialog', { name: /start a workflow review/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole('dialog', { name: /book strategy call/i })).not.toBeInTheDocument();
 
     fireEvent.click(dockTrigger);
     fireEvent.click(screen.getByRole('button', { name: /talk to agent ada/i }));
@@ -199,7 +189,7 @@ describe('Sprint 6 hardening and polish', () => {
     );
     expect(container.querySelector('#proof')).toHaveAttribute('aria-labelledby', 'proof-title');
     expect(container.querySelector('#proof-title')).toHaveTextContent(
-      /the gains grow as the workflow gets more specialized\./i,
+      /proven gains from real workflows\./i,
     );
     expect(within(proofSection).getByText(/^80%$/i)).toBeInTheDocument();
     expect(within(proofSection).getByText(/^same team$/i)).toBeInTheDocument();

@@ -5,7 +5,6 @@ import CapabilitySceneDeck from './CapabilitySceneDeck';
 import ContactCommandSurface from './ContactCommandSurface';
 import DifferentiationSplitSurface from './DifferentiationSplitSurface';
 import HeroShaderCanvas from './HeroShaderCanvas';
-import LandingMotionSpine from './LandingMotionSpine';
 import MobileContactDock from './MobileContactDock';
 import TrustSurface from './TrustSurface';
 import {
@@ -13,6 +12,7 @@ import {
   differentiationSurface,
   motionSections,
   proofSurface,
+  projectsSurface,
   trustStripSurface,
   trustSurface,
   workflowStorySurface,
@@ -166,6 +166,35 @@ function ResultsSurface({ surface }) {
   );
 }
 
+function ProjectsSurface({ surface }) {
+  return (
+    <div className="landing-projects-surface" aria-label={surface.ariaLabel}>
+      <div className="landing-projects-grid">
+        {surface.projects.map((project) => (
+          <article key={project.id} className="landing-project-card">
+            <div className="landing-project-card__header">
+              <span className="landing-project-card__client">{project.client}</span>
+              <span className="landing-project-card__industry">{project.industry}</span>
+            </div>
+            <div className="landing-project-card__body">
+              <p className="landing-project-card__challenge">
+                <strong>Challenge:</strong> {project.challenge}
+              </p>
+              <p className="landing-project-card__solution">
+                <strong>Solution:</strong> {project.solution}
+              </p>
+              <p className="landing-project-card__result">
+                <strong>Result:</strong> {project.result}
+              </p>
+            </div>
+            <div className="landing-project-card__metric">{project.metric}</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function getSectionSignalState(sectionId, activeSectionId) {
   const activeIndex = motionSections.findIndex((section) => section.id === activeSectionId);
   const sectionIndex = motionSections.findIndex((section) => section.id === sectionId);
@@ -221,7 +250,6 @@ function LandingPage({ onStartConversation }) {
   const [isMobileContactDockOpen, setIsMobileContactDockOpen] = useState(false);
   const pageRef = useRef(null);
   const heroRef = useRef(null);
-  const motionSpineRef = useRef(null);
   const eyebrowRef = useRef(null);
   const titleRef = useRef(null);
   const introRef = useRef(null);
@@ -334,12 +362,11 @@ function LandingPage({ onStartConversation }) {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    if (prefersReducedMotion || !pageRef.current || !motionSpineRef.current) {
+    if (prefersReducedMotion || !pageRef.current) {
       return undefined;
     }
 
     const scroller = document.getElementById('root');
-
     if (!scroller) {
       return undefined;
     }
@@ -349,35 +376,11 @@ function LandingPage({ onStartConversation }) {
     media.add('(min-width: 1100px)', () => {
       const context = gsap.context(() => {
         const page = pageRef.current;
-        const spine = motionSpineRef.current;
         const sections = gsap.utils.toArray('[data-motion-section]', page);
 
         if (!sections.length) {
           return undefined;
         }
-
-        const pinDistance = () => Math.round(Math.min(window.innerHeight * 0.32, 320));
-        const setProgress = (progress) => {
-          const value = progress.toFixed(4);
-          const percentage = `${(progress * 100).toFixed(2)}%`;
-
-          spine.style.setProperty('--landing-motion-progress', value);
-          spine.style.setProperty('--landing-motion-progress-percent', percentage);
-          page.style.setProperty('--landing-motion-progress', value);
-          page.style.setProperty('--landing-motion-progress-percent', percentage);
-        };
-
-        setProgress(0);
-
-        ScrollTrigger.create({
-          trigger: sections[0],
-          scroller,
-          start: 'top top',
-          endTrigger: sections[sections.length - 1],
-          end: 'bottom bottom',
-          invalidateOnRefresh: true,
-          onUpdate: (self) => setProgress(self.progress),
-        });
 
         sections.forEach((section, index) => {
           const sectionId = section.id;
@@ -393,35 +396,13 @@ function LandingPage({ onStartConversation }) {
           });
         });
 
-        ScrollTrigger.create({
-          trigger: heroRef.current,
-          scroller,
-          start: 'top top',
-          end: () => `+=${pinDistance()}`,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-        });
-
         return undefined;
       }, pageRef);
 
-      return () => {
-        motionSpineRef.current?.style.removeProperty('--landing-motion-progress');
-        motionSpineRef.current?.style.removeProperty('--landing-motion-progress-percent');
-        pageRef.current?.style.removeProperty('--landing-motion-progress');
-        pageRef.current?.style.removeProperty('--landing-motion-progress-percent');
-        context.revert();
-      };
+      return () => context.revert();
     });
 
-    return () => {
-      motionSpineRef.current?.style.removeProperty('--landing-motion-progress');
-      motionSpineRef.current?.style.removeProperty('--landing-motion-progress-percent');
-      pageRef.current?.style.removeProperty('--landing-motion-progress');
-      pageRef.current?.style.removeProperty('--landing-motion-progress-percent');
-      media.revert();
-    };
+    return () => media.revert();
   }, [prefersReducedMotion]);
 
   return (
@@ -457,6 +438,9 @@ function LandingPage({ onStartConversation }) {
             <a href="#capabilities" aria-current={activeSectionId === 'capabilities' ? 'location' : undefined}>
               Examples
             </a>
+            <a href="#projects" aria-current={activeSectionId === 'projects' ? 'location' : undefined}>
+              Projects
+            </a>
             <a href="#contact" aria-current={activeSectionId === 'contact' ? 'location' : undefined}>
               Contact
             </a>
@@ -471,15 +455,6 @@ function LandingPage({ onStartConversation }) {
           ) : null}
         </div>
       </header>
-
-      {!prefersReducedMotion ? (
-        <LandingMotionSpine
-          motionRef={motionSpineRef}
-          sections={motionSections}
-          activeSectionId={activeSectionId}
-          isHidden={activeSectionId === 'hero'}
-        />
-      ) : null}
 
       <main id="landing-main" tabIndex={-1}>
         <section
@@ -563,17 +538,16 @@ function LandingPage({ onStartConversation }) {
           id="agent-harness"
           eyebrow="How it works"
           title="Start with one workflow."
-          intro="No full transformation first. Pick one workflow, prove the value, then decide where to expand."
+          intro="Pick the process that repeats most. Prove value. Then expand."
           signalState={getSectionSignalState('agent-harness', activeSectionId)}
         >
           <div className="landing-process-grid">
             <article className="landing-process-lead">
-              <p className="landing-panel-label">Why this start works</p>
-              <h3>The first workflow should feel obvious.</h3>
+              <p className="landing-panel-label">Why this works</p>
+              <h3>Pick the obvious one first.</h3>
               <p>
-                The best starting point is already known inside the business. It is repeatable,
-                multi-step, and important enough that taking manual load out of it changes the day
-                for the team.
+                The best workflow to automate is already slowing your team down. It is repeatable,
+                multi-step, and important enough that removing manual work changes the day.
               </p>
 
               <ul className="landing-premium-bullet-list" aria-label="How to choose the first workflow">
@@ -635,6 +609,16 @@ function LandingPage({ onStartConversation }) {
           signalState={getSectionSignalState('proof', activeSectionId)}
         >
           <ResultsSurface surface={proofSurface} />
+        </LandingSection>
+
+        <LandingSection
+          id="projects"
+          eyebrow={projectsSurface.eyebrow}
+          title={projectsSurface.title}
+          intro={projectsSurface.intro}
+          signalState={getSectionSignalState('projects', activeSectionId)}
+        >
+          <ProjectsSurface surface={projectsSurface} />
         </LandingSection>
 
         <section

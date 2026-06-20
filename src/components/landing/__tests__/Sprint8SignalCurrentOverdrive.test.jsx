@@ -19,13 +19,7 @@ vi.mock('../TrustSurface', () => ({
 }));
 
 vi.mock('../LandingMotionSpine', () => ({
-  default: ({ activeSectionId, isHidden = false }) => (
-    <aside
-      data-testid="motion-spine"
-      data-active-section-id={activeSectionId}
-      data-hidden={isHidden ? 'true' : 'false'}
-    />
-  ),
+  default: () => null,
 }));
 
 vi.mock('../ContactCommandSurface', () => ({
@@ -56,14 +50,12 @@ describe('Sprint 8 landing motion simplification', () => {
     installMatchMedia(false);
   });
 
-  it('keeps motion mode active without rendering the page-spanning signal current overlay', () => {
-    const { container, getByTestId, queryByTestId } = render(<LandingPage onStartConversation={vi.fn()} />);
+  it('keeps motion mode active without rendering the page-spanning signal current overlay or motion spine', () => {
+    const { container, queryByTestId } = render(<LandingPage onStartConversation={vi.fn()} />);
 
     expect(container.querySelector('.landing-page')).toHaveClass('landing-page--motion-enhanced');
     expect(queryByTestId('signal-current')).not.toBeInTheDocument();
-    expect(getByTestId('motion-spine')).toBeInTheDocument();
-    expect(getByTestId('motion-spine')).toHaveAttribute('data-active-section-id', 'hero');
-    expect(getByTestId('motion-spine')).toHaveAttribute('data-hidden', 'true');
+    expect(queryByTestId('motion-spine')).not.toBeInTheDocument();
     expect(container.querySelector('#hero')).toHaveAttribute('data-signal-state', 'active');
     expect(container.querySelector('#workflow-story')).toHaveAttribute('data-signal-state', 'upcoming');
   });
