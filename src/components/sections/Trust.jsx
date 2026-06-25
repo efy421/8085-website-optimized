@@ -1,73 +1,32 @@
-import { useEffect, useRef, useState } from 'react';
 import landingContent from '../../data/landingContent';
-import usePopIn from '../../hooks/usePopIn';
+import useCountUp from '../../hooks/useCountUp';
 
 const { trust } = landingContent;
 
-function AnimatedCounter({ value, duration = 1200 }) {
-  const ref = useRef(null);
-  const [displayValue, setDisplayValue] = useState(value);
-  const hasAnimated = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const numericMatch = value.match(/^(\d+)/);
-    if (!numericMatch) return;
-
-    const numericTarget = parseInt(numericMatch[1], 10);
-    const suffix = value.slice(numericMatch[1].length);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated.current) {
-          hasAnimated.current = true;
-          const startTime = performance.now();
-
-          const animate = (now) => {
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(eased * numericTarget);
-            setDisplayValue(`${current}${suffix}`);
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [value, duration]);
-
-  return <span ref={ref}>{displayValue}</span>;
-}
-
-function PopInMetric({ value, label, delay = 0 }) {
-  const { ref, isVisible } = usePopIn();
+function MetricCard({ metric, index }) {
+  const numericMatch = metric.value.match(/^(\d+)/);
+  const numericTarget = numericMatch ? parseInt(numericMatch[1], 10) : 0;
+  const suffix = numericMatch ? metric.value.slice(numericMatch[1].length) : '';
+  const { ref, count } = useCountUp(numericTarget, 1200);
 
   return (
-    <div
-      className={`trust__metric ${isVisible ? 'trust__metric--visible' : ''}`}
-      ref={ref}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      <span className="trust__metric-glow" aria-hidden="true" />
+    <div ref={ref} className="trust__metric-card reveal" style={{ '--metric-index': index }}>
+      <div className="trust__metric-signal" aria-hidden="true" />
       <span className="trust__metric-value">
-        <AnimatedCounter value={value} />
+        {numericTarget > 0 ? `${count}${suffix}` : metric.value}
       </span>
-      <span className="trust__metric-label">{label}</span>
+      <span className="trust__metric-label">{metric.label}</span>
     </div>
   );
 }
 
 export default function Trust() {
   return (
-    <section className="trust" id="trust">
+    <section className="section section--trust" id="trust">
+      <div className="section__grid-bg" aria-hidden="true" />
+      <div className="section__signal-current" aria-hidden="true">
+        <div className="section__signal-wash" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{trust.badge}</span>
@@ -87,6 +46,7 @@ export default function Trust() {
         <div className="trust__testimonials">
           {trust.testimonials.map((testimonial) => (
             <article className="trust__testimonial reveal" key={testimonial.id}>
+              <div className="trust__testimonial-signal" aria-hidden="true" />
               <blockquote className="trust__testimonial-quote">
                 &ldquo;{testimonial.quote}&rdquo;
               </blockquote>
@@ -100,12 +60,7 @@ export default function Trust() {
 
         <div className="trust__metrics">
           {trust.metrics.map((metric, i) => (
-            <PopInMetric
-              key={i}
-              value={metric.value}
-              label={metric.label}
-              delay={i * 120}
-            />
+            <MetricCard key={i} metric={metric} index={i} />
           ))}
         </div>
       </div>
