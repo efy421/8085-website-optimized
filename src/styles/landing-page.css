@@ -749,8 +749,17 @@ h3 { font-size: var(--text-h3); }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { width: 100%; }
   .hero__eva-dock { max-width: 100%; }
-  .hero__proof-rail { max-width: 100%; }
+  .hero__proof-rail { max-width: 100%; gap: var(--space-2); }
   .hero__right { width: 100%; }
+  .hero__headline { font-size: clamp(2.4rem, 8vw, 4rem); }
+  .hero__subheadline { font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .hero__proof-rail {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 280px;
+  }
 }
 
 /* ==========================================================================
@@ -1642,6 +1651,15 @@ h3 { font-size: var(--text-h3); }
 
 @media (max-width: 767px) {
   .faq { padding: 3rem 0; }
+  .faq__item-question {
+    font-size: 0.95rem;
+    padding: var(--space-5) 0;
+  }
+  .faq__item-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 1rem;
+  }
 }
 
 /* ==========================================================================
@@ -1757,6 +1775,7 @@ h3 { font-size: var(--text-h3); }
 @media (max-width: 767px) {
   .cta { padding: 3rem 0; }
   .cta__content { padding: var(--space-10) var(--space-6); }
+  .cta__headline { font-size: clamp(1.5rem, 4vw, 2rem); }
   .cta__actions { flex-direction: column; }
   .cta__actions .btn { width: 100%; }
   .cta__evafloat { display: none; }
@@ -2552,14 +2571,22 @@ h3 { font-size: var(--text-h3); }
    27. SECTION SHARED AGENTIC LAYER
    ========================================================================== */
 
+.section {
+  padding: 4.75rem 0;
+}
+
 .section--challenges,
-.section--solutions,
 .section--how-we-work,
 .section--services,
-.section--projects,
-.section--trust {
+.section--projects {
   position: relative;
   overflow: hidden;
+  background: rgba(255,255,255,0.36);
+  border-top: 1px solid rgba(16,19,18,0.08);
+}
+
+@media (max-width: 767px) {
+  .section { padding: 3rem 0; }
 }
 
 .section__grid-bg {
