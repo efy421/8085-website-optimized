@@ -1,13 +1,29 @@
+import { useRef, useCallback } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { projects } = landingContent;
 
 function CaseCard({ study, index }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = useCallback((e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+  }, []);
+
   return (
-    <div className="case-card reveal" style={{ '--card-index': index }}>
-      <div className="case-card__signal-line" aria-hidden="true" />
+    <div
+      ref={cardRef}
+      className="agentic-card case-card reveal"
+      style={{ '--card-index': index }}
+      onMouseMove={handleMouseMove}
+    >
+      <div className="agentic-card__spotlight" aria-hidden="true" />
+      <div className="agentic-card__signal-top" aria-hidden="true" />
       <div className="case-card__image" style={{ background: study.imageColor || '#1a1a2e' }}>
-        <div className="case-card__image-overlay" aria-hidden="true" />
         <div className="case-card__image-scan" aria-hidden="true" />
         <div className="case-card__image-label">
           <span className="case-card__image-industry">{study.industry}</span>
@@ -15,26 +31,22 @@ function CaseCard({ study, index }) {
         </div>
       </div>
       <div className="case-card__content">
-        <div className="case-card__header">
-          <h3 className="case-card__title">{study.title}</h3>
-          <p className="case-card__challenge">{study.problem}</p>
-        </div>
+        <h3 className="case-card__title">{study.title}</h3>
+        <p className="case-card__challenge">{study.problem}</p>
         <div className="case-card__solution">
           <h4 className="case-card__solution-title">Solution</h4>
           <p className="case-card__solution-text">{study.solution}</p>
         </div>
         <div className="case-card__metrics">
           {study.metrics.map((metric, i) => (
-            <div className="case-card__metric" key={i} style={{ '--metric-delay': `${i * 0.1}s` }}>
+            <div className="case-card__metric" key={i}>
               <span className="case-card__metric-value">{metric.value}</span>
               <span className="case-card__metric-label">{metric.label}</span>
             </div>
           ))}
         </div>
         {study.cta && (
-          <a className="case-card__cta btn btn--secondary" href={study.cta.href}>
-            {study.cta.label}
-          </a>
+          <a className="case-card__cta btn btn--secondary" href={study.cta.href}>{study.cta.label}</a>
         )}
       </div>
     </div>

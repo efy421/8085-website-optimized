@@ -1,18 +1,41 @@
+import { useRef, useCallback } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { services } = landingContent;
 
+const serviceIcons = [
+  <svg key="0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" x2="12" y1="19" y2="22" /></svg>,
+  <svg key="1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>,
+  <svg key="2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
+  <svg key="3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>,
+  <svg key="4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4" /><path d="M12 18v4" /><path d="M4.93 4.93l2.83 2.83" /><path d="M16.24 16.24l2.83 2.83" /><path d="M2 12h4" /><path d="M18 12h4" /><path d="M4.93 19.07l2.83-2.83" /><path d="M16.24 7.76l2.83-2.83" /></svg>,
+];
+
 function ServiceCard({ item, index }) {
+  const cardRef = useRef(null);
+
+  const handleMouseMove = useCallback((e) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
+    card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
+  }, []);
+
   return (
-    <div className="service-card reveal" style={{ '--card-index': index }}>
-      <div className="service-card__signal-line" aria-hidden="true" />
-      <div className="service-card__icon" aria-hidden="true">
-        <div className="service-card__icon-ring" />
-        <div className="service-card__icon-pulse" />
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
-          <path d="M18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
-        </svg>
+    <div
+      ref={cardRef}
+      className="agentic-card service-card reveal"
+      style={{ '--card-index': index }}
+      onMouseMove={handleMouseMove}
+    >
+      <div className="agentic-card__spotlight" aria-hidden="true" />
+      <div className="agentic-card__signal-top" aria-hidden="true" />
+      <div className="agentic-card__signal-bottom" aria-hidden="true" />
+      <div className="agentic-card__icon-wrap">
+        <div className="agentic-card__icon-ring" aria-hidden="true" />
+        <div className="agentic-card__icon-pulse" aria-hidden="true" />
+        <div className="agentic-card__icon">{serviceIcons[index % serviceIcons.length]}</div>
       </div>
       <h3 className="service-card__title">{item.title}</h3>
       <p className="service-card__desc">{item.description}</p>

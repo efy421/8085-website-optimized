@@ -11,18 +11,17 @@ function TimelineStep({ step, index }) {
         <div className="timeline-step__node-pulse" />
       </div>
       <div className="timeline-step__card">
-        <div className="timeline-step__number" aria-hidden="true">
-          {step.number || String(index + 1).padStart(2, '0')}
-        </div>
-        <h3 className="timeline-step__title">{step.title}</h3>
-        <p className="timeline-step__desc">{step.description}</p>
         <div className="timeline-step__signal" aria-hidden="true">
-          <svg viewBox="0 0 120 4" fill="none">
-            <line x1="0" y1="2" x2="120" y2="2" stroke="rgba(195,100,43,0.3)" strokeWidth="1" strokeDasharray="4 4">
-              <animate attributeName="stroke-dashoffset" from="8" to="0" dur="1.5s" repeatCount="indefinite" />
+          <svg viewBox="0 0 200 4" fill="none">
+            <line x1="0" y1="2" x2="200" y2="2" stroke="rgba(195,100,43,0.15)" strokeWidth="1" />
+            <line x1="0" y1="2" x2="200" y2="2" stroke="rgba(195,100,43,0.5)" strokeWidth="1.5" strokeDasharray="8 12">
+              <animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite" />
             </line>
           </svg>
         </div>
+        <div className="timeline-step__number">{step.number || String(index + 1).padStart(2, '0')}</div>
+        <h3 className="timeline-step__title">{step.title}</h3>
+        <p className="timeline-step__desc">{step.description}</p>
       </div>
     </div>
   );
