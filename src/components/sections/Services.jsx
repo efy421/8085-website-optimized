@@ -1,5 +1,6 @@
 import landingContent from '../../data/landingContent';
 import TiltCard from '../landing/TiltCard';
+import useSpotlight from '../../hooks/useSpotlight';
 
 const { services } = landingContent;
 
@@ -11,6 +12,23 @@ const serviceIcons = [
   <svg key="tools" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>,
 ];
 
+function ServiceCard({ item, index }) {
+  const spotlightRef = useSpotlight();
+
+  return (
+    <div ref={spotlightRef} style={{ position: 'relative' }}>
+      <TiltCard className="services__card reveal" style={{ transitionDelay: `${index * 0.08}s` }}>
+        <div className="services__card-icon" aria-hidden="true">
+          {serviceIcons[index]}
+        </div>
+        <h3 className="services__card-title">{item.title}</h3>
+        <p className="services__card-description">{item.description}</p>
+        <p className="services__card-outcome">{item.outcome}</p>
+      </TiltCard>
+    </div>
+  );
+}
+
 export default function Services() {
   return (
     <section className="services" id="services">
@@ -21,14 +39,7 @@ export default function Services() {
         </div>
         <div className="services__grid">
           {services.items.map((item, i) => (
-            <TiltCard className="services__card reveal" key={item.id} style={{ transitionDelay: `${i * 0.08}s` }}>
-              <div className="services__card-icon" aria-hidden="true">
-                {serviceIcons[i]}
-              </div>
-              <h3 className="services__card-title">{item.title}</h3>
-              <p className="services__card-description">{item.description}</p>
-              <p className="services__card-outcome">{item.outcome}</p>
-            </TiltCard>
+            <ServiceCard key={item.id} item={item} index={i} />
           ))}
         </div>
       </div>

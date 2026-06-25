@@ -1,7 +1,51 @@
+import { useEffect, useRef, useState } from 'react';
 import landingContent from '../../data/landingContent';
 import usePopIn from '../../hooks/usePopIn';
 
 const { trust } = landingContent;
+
+function AnimatedCounter({ value, duration = 1200 }) {
+  const ref = useRef(null);
+  const [displayValue, setDisplayValue] = useState(value);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const numericMatch = value.match(/^(\d+)/);
+    if (!numericMatch) return;
+
+    const numericTarget = parseInt(numericMatch[1], 10);
+    const suffix = value.slice(numericMatch[1].length);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const startTime = performance.now();
+
+          const animate = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * numericTarget);
+            setDisplayValue(`${current}${suffix}`);
+            if (progress < 1) requestAnimationFrame(animate);
+          };
+
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, duration]);
+
+  return <span ref={ref}>{displayValue}</span>;
+}
 
 function PopInMetric({ value, label, delay = 0 }) {
   const { ref, isVisible } = usePopIn();
@@ -13,7 +57,9 @@ function PopInMetric({ value, label, delay = 0 }) {
       style={{ transitionDelay: `${delay}ms` }}
     >
       <span className="trust__metric-glow" aria-hidden="true" />
-      <span className="trust__metric-value">{value}</span>
+      <span className="trust__metric-value">
+        <AnimatedCounter value={value} />
+      </span>
       <span className="trust__metric-label">{label}</span>
     </div>
   );

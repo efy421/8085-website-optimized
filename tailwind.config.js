@@ -14,8 +14,12 @@ export default {
         signal: {
           DEFAULT: "#c3642b",
           hover: "#d4783f",
+          light: "#e8a87c",
         },
-        ember: "#c3642b",
+        ember: {
+          DEFAULT: "#c3642b",
+          hover: "#d4783f",
+        },
         moss: "#6d7e4e",
         fog: "#e8e3d9",
         mist: "#d9d3c7",

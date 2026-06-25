@@ -4,6 +4,11 @@ const landingContent = {
     headline: "Increase efficiency by 80%. Decrease cost by 85%.",
     headlineEmphasis: ["80%", "85%"],
     subheadline: "We automate repetitive work, streamline operations, and build AI-powered systems so your team focuses on what matters — growth.",
+    signals: [
+      "Start with one workflow",
+      "Built around your process",
+      "You own what we build"
+    ],
     primaryCTA: { label: "Book Consultation", href: "#contact" },
     secondaryCTA: { label: "See How We Work", href: "#process" },
     trustRow: {
@@ -134,20 +139,68 @@ const landingContent = {
   },
 
   projects: {
-    badge: "Projects",
-    headline: "Proven results",
-    placeholder: {
-      title: "Case studies coming soon",
-      text: "We're building our portfolio of client success stories. Each project follows the same structure: Industry, Problem, Solution, and Measurable Outcome.",
-      fields: ["Industry", "Problem", "Solution", "Outcome", "Metric 1", "Metric 2"]
-    },
-    items: []
+    badge: "Case Studies",
+    headline: "Proven results across industries",
+    items: [
+      {
+        id: "cs1",
+        industry: "Automotive",
+        client: "Audi",
+        title: "Manufacturing Quality Reporting Automation",
+        problem: "Quality inspection teams spent 20+ hours per week manually compiling reports from production line sensors, spreadsheets, and ERP systems. Delayed reporting meant defects went undetected for days.",
+        solution: "We built an automated data pipeline that ingests sensor data, quality metrics, and production logs in real-time. Reports generate automatically with anomaly detection highlighting issues instantly.",
+        outcome: "Reporting time dropped from 20 hours to 2 hours per week. Defect detection went from days to minutes. Quality team redirected to root-cause analysis.",
+        metrics: [
+          { value: "90%", label: "Time Reduction" },
+          { value: "10x", label: "Faster Detection" }
+        ],
+        cta: { label: "Read Full Case Study", href: "#contact" },
+        imageColor: "#1a1a2e"
+      },
+      {
+        id: "cs2",
+        industry: "Logistics",
+        client: "DHL",
+        title: "Warehouse Operations Streamlining",
+        problem: "Warehouse staff manually reconciled orders across 3 separate systems. Errors in data entry caused 12% of shipments to have incorrect inventory records, leading to returns and customer complaints.",
+        solution: "We unified the order management system with automated inventory sync across all warehouses. Barcode scanning feeds directly into the system, eliminating manual data entry entirely.",
+        outcome: "Error rate dropped from 12% to 0.3%. Fulfillment speed doubled. Customer complaints reduced by 78% within the first quarter.",
+        metrics: [
+          { value: "97%", label: "Error Reduction" },
+          { value: "2x", label: "Fulfillment Speed" }
+        ],
+        cta: { label: "Read Full Case Study", href: "#contact" },
+        imageColor: "#1a2e1a"
+      },
+      {
+        id: "cs3",
+        industry: "Pharmaceuticals",
+        client: "Bayer",
+        title: "Research Data Pipeline Modernization",
+        problem: "Research teams spent 30% of their time on data wrangling — copying results between lab systems, formatting for reports, and chasing approvals via email. Critical insights were buried in spreadsheets.",
+        solution: "We automated the data pipeline from lab instruments to analysis dashboards. Approval workflows moved to automated routing with SLA tracking. Researchers get real-time visibility into pipeline status.",
+        outcome: "Researchers reclaimed 15+ hours per week previously spent on data wrangling. Time from experiment to actionable insight reduced by 60%.",
+        metrics: [
+          { value: "60%", label: "Faster Insights" },
+          { value: "15hr", label: "Saved Weekly" }
+        ],
+        cta: { label: "Read Full Case Study", href: "#contact" },
+        imageColor: "#2e1a1a"
+      }
+    ]
   },
 
   trust: {
     badge: "Trust",
     headline: "Trusted by teams building the future",
-    logos: [],
+    logos: [
+      { name: "Audi", src: `${import.meta.env.BASE_URL}images/partners-logo-audi.svg` },
+      { name: "DHL", src: `${import.meta.env.BASE_URL}images/partners-logo-dhl.svg` },
+      { name: "Bayer", src: `${import.meta.env.BASE_URL}images/partners-logo-bayer.svg` },
+      { name: "Mubea", src: `${import.meta.env.BASE_URL}images/partners-logo-mubea.svg` },
+      { name: "Postbank", src: `${import.meta.env.BASE_URL}images/partners-logo-postbank.svg` },
+      { name: "Cologne Intelligence", src: `${import.meta.env.BASE_URL}images/partners-logo-ci.webp` }
+    ],
     testimonials: [
       {
         id: "t1",
