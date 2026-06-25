@@ -18,7 +18,7 @@ export default function Footer() {
             <h3 className="site-footer__heading">Services</h3>
             <ul className="site-footer__list" role="list">
               {footer.servicesLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <a className="site-footer__link" href={link.href}>
                     {link.label}
                   </a>
@@ -31,7 +31,7 @@ export default function Footer() {
             <h3 className="site-footer__heading">Company</h3>
             <ul className="site-footer__list" role="list">
               {footer.companyLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <a className="site-footer__link" href={link.href}>
                     {link.label}
                   </a>
@@ -44,8 +44,12 @@ export default function Footer() {
             <h3 className="site-footer__heading">Connect</h3>
             <ul className="site-footer__list" role="list">
               {footer.connectLinks.map((link) => (
-                <li key={link.href}>
-                  <a className="site-footer__link" href={link.href} target="_blank" rel="noopener noreferrer">
+                <li key={link.label}>
+                  <a
+                    className="site-footer__link"
+                    href={link.href}
+                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
                     {link.label}
                   </a>
                 </li>

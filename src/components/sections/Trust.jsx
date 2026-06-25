@@ -1,6 +1,23 @@
 import landingContent from '../../data/landingContent';
+import usePopIn from '../../hooks/usePopIn';
 
 const { trust } = landingContent;
+
+function PopInMetric({ value, label, delay = 0 }) {
+  const { ref, isVisible } = usePopIn();
+
+  return (
+    <div
+      className={`trust__metric ${isVisible ? 'trust__metric--visible' : ''}`}
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      <span className="trust__metric-glow" aria-hidden="true" />
+      <span className="trust__metric-value">{value}</span>
+      <span className="trust__metric-label">{label}</span>
+    </div>
+  );
+}
 
 export default function Trust() {
   return (
@@ -11,13 +28,15 @@ export default function Trust() {
           <h2 className="section-header__headline">{trust.headline}</h2>
         </div>
 
-        <div className="trust__logos reveal" aria-label="Trusted company logos">
-          {trust.logos.map((logo) => (
-            <div className="trust__logo" key={logo.name}>
-              <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
-            </div>
-          ))}
-        </div>
+        {trust.logos.length > 0 && (
+          <div className="trust__logos reveal" aria-label="Trusted company logos">
+            {trust.logos.map((logo) => (
+              <div className="trust__logo" key={logo.name}>
+                <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="trust__testimonials">
           {trust.testimonials.map((testimonial) => (
@@ -35,10 +54,12 @@ export default function Trust() {
 
         <div className="trust__metrics">
           {trust.metrics.map((metric, i) => (
-            <div className="trust__metric reveal" key={i} style={{ transitionDelay: `${i * 0.1}s` }}>
-              <span className="trust__metric-value">{metric.value}</span>
-              <span className="trust__metric-label">{metric.label}</span>
-            </div>
+            <PopInMetric
+              key={i}
+              value={metric.value}
+              label={metric.label}
+              delay={i * 120}
+            />
           ))}
         </div>
       </div>

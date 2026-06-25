@@ -1,84 +1,85 @@
 const landingContent = {
   hero: {
-    badge: "Software House",
-    headline: "Scale operations without increasing complexity",
-    subheadline: "We help businesses reduce operational bottlenecks and automate repetitive work so teams can focus on growth instead of manual processes.",
+    badge: "AI Automation Agency",
+    headline: "Increase efficiency by 80%. Decrease cost by 85%.",
+    headlineEmphasis: ["80%", "85%"],
+    subheadline: "We automate repetitive work, streamline operations, and build AI-powered systems so your team focuses on what matters — growth.",
     primaryCTA: { label: "Book Consultation", href: "#contact" },
     secondaryCTA: { label: "See How We Work", href: "#process" },
     trustRow: {
       metrics: [
-        { value: "50+", label: "Projects Delivered" },
-        { value: "70%", label: "Average Time Saved" },
-        { value: "98%", label: "Client Satisfaction" }
+        { value: "80%", label: "Efficiency Increase" },
+        { value: "85%", label: "Cost Decrease" },
+        { value: "4–12wk", label: "To First Results" }
       ]
     }
   },
 
   problems: {
     badge: "Challenges",
-    headline: "Common operational challenges",
+    headline: "Sound familiar?",
     description: "These are the problems we solve every day.",
     items: [
       {
         id: "p1",
-        title: "Manual Operations",
-        description: "Your team spends hours on repetitive tasks that could be handled automatically. Every manual step is time stolen from strategic work."
+        title: "Your team wastes hours on repetitive tasks",
+        description: "Data entry, copy-pasting between tools, manual reports — the work that drains energy and steals time from strategy."
       },
       {
         id: "p2",
-        title: "Process Bottlenecks",
-        description: "Approvals pile up, tasks wait on individuals, and workflows stall. Slow processes cost you revenue and frustrate your team."
+        title: "Growth means more complexity, not less",
+        description: "Every new client, product, or hire adds another layer of manual processes. Your team works harder just to stay in place."
       },
       {
         id: "p3",
-        title: "Disconnected Tools",
-        description: "Data lives in spreadsheets, emails, and separate systems. Your team wastes time switching between tools and reconciling information."
+        title: "Critical knowledge lives in people's heads",
+        description: "When someone is out, sick, or leaves — operations suffer. Tribal knowledge creates single points of failure."
       },
       {
         id: "p4",
-        title: "Human Dependency",
-        description: "Critical knowledge lives in a few people's heads. When they leave or take time off, operations suffer and mistakes increase."
+        title: "Your tools don't talk to each other",
+        description: "Data lives in spreadsheets, emails, and separate systems. Your team wastes time reconciling information instead of using it."
       },
       {
         id: "p5",
-        title: "Scaling Challenges",
-        description: "Growth brings more complexity, not less. Your current processes break down under pressure, and hiring more people only adds overhead."
+        title: "Manual errors cost you clients and revenue",
+        description: "Missed follow-ups, incorrect data, delayed responses — the small mistakes that compound into big problems."
       },
       {
         id: "p6",
-        title: "Slow Execution",
-        description: "Good ideas take months to implement. By the time solutions are ready, the business needs have already changed."
+        title: "Hiring more people isn't the answer",
+        description: "You need scale, not headcount. Adding people to broken processes just multiplies the overhead."
       }
     ]
   },
 
   solutions: {
     badge: "Solutions",
-    headline: "How we help",
+    headline: "How we fix this",
     items: [
       {
         id: "s1",
         problem: "Your team spends hours each week on repetitive data entry and manual handoffs between systems.",
-        solution: "We automate end-to-end workflows that connect your existing tools and eliminate manual steps.",
-        outcome: "Your team saves 15-20 hours per week and processes complete in minutes instead of days."
+        solution: "We automate end-to-end workflows that connect your existing tools and eliminate manual steps entirely.",
+        outcome: "Your team saves 15–20 hours per week. Processes complete in minutes instead of days."
       },
       {
         id: "s2",
         problem: "Critical information is scattered across spreadsheets, emails, and different software platforms.",
         solution: "We integrate your data into a single source of truth that everyone can access and trust.",
-        outcome: "Your team makes faster decisions with accurate, real-time information at their fingertips."
+        outcome: "Faster decisions with accurate, real-time information. No more chasing data across five tools."
       },
       {
         id: "s3",
         problem: "Growth means more complexity, more errors, and more people needed just to keep up.",
-        solution: "We build scalable systems that handle increased volume without requiring proportional staffing increases.",
-        outcome: "You scale revenue while keeping operational costs flat and team stress manageable."
+        solution: "We build scalable systems that handle increased volume without requiring proportional staffing.",
+        outcome: "You scale revenue while keeping operational costs flat. Growth becomes a strength, not a burden."
       },
       {
         id: "s4",
         problem: "Key processes depend on specific individuals, creating risk when people are unavailable.",
         solution: "We document and systematize tribal knowledge into reliable, repeatable processes.",
-        outcome: "Your operations continue smoothly regardless of who is available, and new hires get productive faster."
+        outcome: "Operations continue smoothly regardless of who's available. New hires get productive faster."
       }
     ]
   },
@@ -87,11 +88,11 @@ const landingContent = {
     badge: "Process",
     headline: "How we work",
     steps: [
-      { id: "w1", number: "01", title: "Discover", description: "We learn your business, workflows, and challenges." },
-      { id: "w2", number: "02", title: "Design", description: "We map out solutions that fit your operations." },
-      { id: "w3", number: "03", title: "Build", description: "We develop and test with real data." },
-      { id: "w4", number: "04", title: "Deploy", description: "We launch with zero disruption to your team." },
-      { id: "w5", number: "05", title: "Optimize", description: "We refine based on real performance." }
+      { id: "w1", number: "01", title: "Discover", description: "We learn your business, workflows, and where the biggest opportunities are." },
+      { id: "w2", number: "02", title: "Design", description: "We map out solutions that fit your operations — not generic templates." },
+      { id: "w3", number: "03", title: "Build", description: "We develop and test with your real data, in your real environment." },
+      { id: "w4", number: "04", title: "Deploy", description: "We launch with zero disruption to your team. Training included." },
+      { id: "w5", number: "05", title: "Optimize", description: "We refine based on real performance. Your systems get better over time." }
     ]
   },
 
@@ -101,39 +102,33 @@ const landingContent = {
     items: [
       {
         id: "sv1",
-        title: "Process Automation",
-        description: "We replace manual, repetitive tasks with automated workflows that run consistently.",
-        outcome: "Your team frees up hours each week for higher-value work."
+        title: "AI Chatbots",
+        description: "Intelligent chatbots that handle customer inquiries, qualify leads, and provide instant support — 24/7.",
+        outcome: "Your team focuses on complex conversations while AI handles the routine."
       },
       {
         id: "sv2",
-        title: "Workflow Optimization",
-        description: "We redesign how work moves through your organization to eliminate bottlenecks.",
-        outcome: "Projects complete faster with fewer delays and handoff issues."
+        title: "Workflow Automation",
+        description: "We connect your tools and eliminate manual handoffs so work flows automatically from start to finish.",
+        outcome: "Processes that used to take days now happen in minutes, without human intervention."
       },
       {
         id: "sv3",
-        title: "Data Integration",
-        description: "We connect your systems so information flows automatically between them.",
-        outcome: "Your team stops switching tools and starts making decisions faster."
+        title: "Sales Funnel Optimization",
+        description: "We automate lead capture, nurturing, and follow-up so no opportunity falls through the cracks.",
+        outcome: "More leads converted, faster response times, and a pipeline that runs itself."
       },
       {
         id: "sv4",
-        title: "Reporting & Analytics",
-        description: "We build dashboards and reports that give you real-time visibility into operations.",
-        outcome: "You spot problems early and track improvements with clear metrics."
+        title: "Email Marketing Automation",
+        description: "Targeted, personalized email sequences that nurture prospects and retain customers automatically.",
+        outcome: "Higher open rates, better engagement, and revenue that grows while you sleep."
       },
       {
         id: "sv5",
-        title: "Operations Consulting",
-        description: "We analyze your workflows and identify where improvements will have the biggest impact.",
-        outcome: "You get a clear roadmap for reducing costs and improving efficiency."
-      },
-      {
-        id: "sv6",
-        title: "System Modernization",
-        description: "We upgrade outdated systems to reliable, maintainable solutions that scale.",
-        outcome: "You reduce technical debt and gain systems that grow with your business."
+        title: "Custom AI Tools",
+        description: "Bespoke AI solutions built for your specific workflows — from data analysis to process automation.",
+        outcome: "Tools that do exactly what your business needs, not what a generic platform allows."
       }
     ]
   },
@@ -141,101 +136,43 @@ const landingContent = {
   projects: {
     badge: "Projects",
     headline: "Proven results",
-    items: [
-      {
-        id: "pj1",
-        industry: "Finance",
-        title: "Automated Reporting & Approvals",
-        problem: "A financial services firm was spending 40 hours per week compiling reports from multiple spreadsheets. Approval workflows stalled regularly, causing delays in client deliverables.",
-        solution: "We consolidated their reporting into a single automated system and streamlined approval workflows. Managers now review and approve with one click instead of chasing emails.",
-        outcome: "Reporting time dropped from 2 days to 2 hours. Approvals that took a week now complete same-day.",
-        metrics: [
-          { value: "90%", label: "Faster Reporting" },
-          { value: "38hrs", label: "Saved Weekly" }
-        ],
-        cta: { label: "View Case Study", href: "#" },
-        imageColor: "#1a365d"
-      },
-      {
-        id: "pj2",
-        industry: "Healthcare",
-        title: "Streamlined Patient Intake",
-        problem: "A healthcare organization handled patient intake through paper forms and manual data entry. Staff spent hours each day transcribing information, leading to errors and long wait times.",
-        solution: "We digitized the intake process and connected it directly to their scheduling system. Patients now complete forms online before their visit, and data flows automatically.",
-        outcome: "Patient wait times reduced by 60%. Staff error rates dropped to near zero, and team morale improved significantly.",
-        metrics: [
-          { value: "60%", label: "Less Wait Time" },
-          { value: "95%", label: "Fewer Errors" }
-        ],
-        cta: { label: "View Case Study", href: "#" },
-        imageColor: "#1a3a2a"
-      },
-      {
-        id: "pj3",
-        industry: "Logistics",
-        title: "Delivery Route Optimization",
-        problem: "A logistics company managed delivery routes manually, resulting in inefficient schedules, excessive fuel costs, and inconsistent delivery windows that frustrated customers.",
-        solution: "We implemented a route management system that automatically assigns deliveries based on location, priority, and capacity. Drivers receive optimized routes each morning.",
-        outcome: "Fuel costs decreased 25% and on-time deliveries improved from 78% to 96%. Customer complaints dropped significantly.",
-        metrics: [
-          { value: "25%", label: "Lower Fuel Costs" },
-          { value: "96%", label: "On-Time Delivery" }
-        ],
-        cta: { label: "View Case Study", href: "#" },
-        imageColor: "#3a2a1a"
-      },
-      {
-        id: "pj4",
-        industry: "Operations",
-        title: "Cross-Department Data Entry",
-        problem: "An operations team manually entered the same data into 5 different systems. Each department maintained separate records, causing version conflicts and wasted hours.",
-        solution: "We created a unified data entry point that automatically syncs information across all systems. Updates made once propagate everywhere in real-time.",
-        outcome: "Data entry time reduced by 80%. Team members now spend time analyzing information instead of inputting it.",
-        metrics: [
-          { value: "80%", label: "Less Data Entry" },
-          { value: "12hrs", label: "Saved Weekly" }
-        ],
-        cta: { label: "View Case Study", href: "#" },
-        imageColor: "#2a1a3a"
-      }
-    ]
+    placeholder: {
+      title: "Case studies coming soon",
+      text: "We're building our portfolio of client success stories. Each project follows the same structure: Industry, Problem, Solution, and Measurable Outcome.",
+      fields: ["Industry", "Problem", "Solution", "Outcome", "Metric 1", "Metric 2"]
+    },
+    items: []
   },
 
   trust: {
     badge: "Trust",
-    headline: "Trusted by teams across industries",
-    logos: [
-      { name: "Client 1", src: "/logos/client1.svg" },
-      { name: "Client 2", src: "/logos/client2.svg" },
-      { name: "Client 3", src: "/logos/client3.svg" },
-      { name: "Client 4", src: "/logos/client4.svg" },
-      { name: "Client 5", src: "/logos/client5.svg" }
-    ],
+    headline: "Trusted by teams building the future",
+    logos: [],
     testimonials: [
       {
         id: "t1",
-        quote: "The team helped us remove bottlenecks and significantly reduce manual effort.",
+        quote: "The team understood our business before suggesting solutions. That made all the difference. They didn't just automate — they transformed how we work.",
         author: "Operations Director",
-        company: "Financial Services Firm"
+        company: "Financial Services"
       },
       {
         id: "t2",
-        quote: "What used to take our team hours now happens automatically. The difference is night and day.",
+        quote: "What used to take our team hours now happens automatically. The difference is night and day. Our team finally has time for strategic work.",
         author: "COO",
         company: "Healthcare Organization"
       },
       {
         id: "t3",
-        quote: "They understood our business before suggesting solutions. That made all the difference.",
+        quote: "They removed bottlenecks we didn't even know we had. Our processes run smoother than ever, and our team morale has improved significantly.",
         author: "CEO",
         company: "Logistics Company"
       }
     ],
     metrics: [
-      { value: "50+", label: "Projects Delivered" },
-      { value: "30+", label: "Industries Served" },
-      { value: "98%", label: "Client Satisfaction" },
-      { value: "70%", label: "Average Time Saved" }
+      { value: "80%", label: "Avg. Efficiency Gain" },
+      { value: "85%", label: "Cost Reduction" },
+      { value: "4–12wk", label: "To First Results" },
+      { value: "100%", label: "Client Retention" }
     ]
   },
 
@@ -246,7 +183,7 @@ const landingContent = {
       {
         id: "f1",
         question: "How long do projects take?",
-        answer: "Most projects complete in 4-12 weeks, depending on scope and complexity. We start with smaller, high-impact wins and expand from there. You will see results before the full project finishes."
+        answer: "Most projects complete in 4–12 weeks, depending on scope and complexity. We start with smaller, high-impact wins and expand from there. You see results before the full project finishes."
       },
       {
         id: "f2",
@@ -256,12 +193,12 @@ const landingContent = {
       {
         id: "f3",
         question: "Which industries do you work with?",
-        answer: "We serve financial services, healthcare, logistics, manufacturing, and operations teams across various sectors. Our approach works wherever there are repetitive processes and manual workflows."
+        answer: "We work across industries — finance, healthcare, logistics, e-commerce, and operations teams. Our approach works wherever there are repetitive processes and manual workflows."
       },
       {
         id: "f4",
         question: "What happens after I contact you?",
-        answer: "We schedule a 30-minute discovery call to understand your operations and challenges. From there, we identify quick wins and outline a plan. No pressure, no sales pitch."
+        answer: "We schedule a 30-minute discovery call to understand your operations and challenges. From there, we identify quick wins and outline a clear path forward. No pressure, no sales pitch."
       },
       {
         id: "f5",
@@ -275,8 +212,8 @@ const landingContent = {
       },
       {
         id: "f7",
-        question: "What if I am not sure what I need?",
-        answer: "That is exactly why we start with discovery. We help you identify where improvements will have the biggest impact. Many clients come to us knowing something is broken but not knowing where to start."
+        question: "What if I'm not sure what I need?",
+        answer: "That's exactly why we start with discovery. We help you identify where improvements will have the biggest impact. Many clients come to us knowing something is broken but not knowing where to start."
       },
       {
         id: "f8",
@@ -287,19 +224,20 @@ const landingContent = {
   },
 
   cta: {
-    headline: "Ready to improve your operations?",
-    description: "Let's discuss your workflows and identify opportunities to reduce manual work and improve efficiency.",
+    headline: "Ready to stop doing manual work?",
+    description: "Let's identify where automation will save your team the most time and money. A 30-minute call to start.",
     primaryCTA: { label: "Book Consultation", href: "#contact" },
-    secondaryCTA: { label: "Contact Team", href: "#contact" }
+    secondaryCTA: { label: "Email Us", href: "mailto:hello@8085.ai" }
   },
 
   footer: {
-    brandDescription: "8085 helps businesses automate repetitive work and improve operational efficiency.",
+    brandDescription: "8085 automates repetitive work and builds AI-powered systems so businesses can focus on growth.",
     servicesLinks: [
-      { label: "Process Automation", href: "#services" },
-      { label: "Workflow Optimization", href: "#services" },
-      { label: "Data Integration", href: "#services" },
-      { label: "Operations Consulting", href: "#services" }
+      { label: "AI Chatbots", href: "#services" },
+      { label: "Workflow Automation", href: "#services" },
+      { label: "Sales Funnels", href: "#services" },
+      { label: "Email Marketing", href: "#services" },
+      { label: "Custom AI Tools", href: "#services" }
     ],
     companyLinks: [
       { label: "About", href: "#" },
@@ -309,7 +247,8 @@ const landingContent = {
     ],
     connectLinks: [
       { label: "Book Consultation", href: "#contact" },
-      { label: "hello@8085.io", href: "mailto:hello@8085.io" }
+      { label: "hello@8085.ai", href: "mailto:hello@8085.ai" },
+      { label: "LinkedIn", href: "https://linkedin.com/company/8085ai", external: true }
     ],
     copyright: "All rights reserved."
   }

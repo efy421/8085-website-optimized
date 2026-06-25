@@ -1,8 +1,7 @@
 import landingContent from '../../data/landingContent';
+import TiltCard from '../landing/TiltCard';
 
 const { problems } = landingContent;
-
-const problemIcons = ['🔁', '👥', '🔧', '⏳', '📊', '🔒'];
 
 export default function Problems() {
   return (
@@ -15,13 +14,13 @@ export default function Problems() {
         </div>
         <div className="problems__grid">
           {problems.items.map((problem, i) => (
-            <article className="problems__card reveal" key={problem.id} style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="problems__card-icon" aria-hidden="true">
-                {problemIcons[i]}
+            <TiltCard className="problems__card reveal" key={problem.id} style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="problems__card-number" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
               </div>
               <h3 className="problems__card-title">{problem.title}</h3>
               <p className="problems__card-description">{problem.description}</p>
-            </article>
+            </TiltCard>
           ))}
         </div>
       </div>

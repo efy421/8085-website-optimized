@@ -27,9 +27,7 @@ export default function FAQ() {
                 onClick={() => handleToggle(i)}
               >
                 <span>{item.question}</span>
-                <span className="faq__item-icon" aria-hidden="true">
-                  {openIndex === i ? '−' : '+'}
-                </span>
+                <span className="faq__item-icon" aria-hidden="true">+</span>
               </button>
               <div className="faq__item-answer" role="region">
                 <p>{item.answer}</p>
