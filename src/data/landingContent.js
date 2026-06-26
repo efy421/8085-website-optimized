@@ -66,38 +66,30 @@ const landingContent = {
       {
         id: "s1",
         problem: "Your team spends hours each week on repetitive data entry and manual handoffs between systems.",
-        solution: "We automate end-to-end workflows that connect your existing tools and eliminate manual steps entirely.",
+        title: "Automate Workflows",
+        description: "Connect your tools and eliminate manual steps entirely.",
         outcome: "Your team saves 15–20 hours per week. Processes complete in minutes instead of days."
       },
       {
         id: "s2",
         problem: "Critical information is scattered across spreadsheets, emails, and different software platforms.",
-        solution: "We integrate your data into a single source of truth that everyone can access and trust.",
+        title: "Unify Your Data",
+        description: "Integrate scattered information into a single trusted source available to everyone.",
         outcome: "Faster decisions with accurate, real-time information. No more chasing data across five tools."
       },
       {
         id: "s3",
-        problem: "Growth means more complexity, more errors, and more people needed just to keep up.",
-        solution: "We build scalable systems that handle increased volume without requiring proportional staffing.",
-        outcome: "You scale revenue while keeping operational costs flat. Growth becomes a strength, not a burden."
+        problem: "Growth adds complexity, errors, and headcount requirements faster than revenue.",
+        title: "Scale Operations",
+        description: "Handle increased volume without proportional headcount increases.",
+        outcome: "You scale revenue while keeping costs flat. Growth becomes a strength, not a burden."
       },
       {
         id: "s4",
         problem: "Key processes depend on specific individuals, creating risk when people are unavailable.",
-        solution: "We document and systematize tribal knowledge into reliable, repeatable processes.",
-        outcome: "Operations continue smoothly regardless of who's available. New hires get productive faster."
-      },
-      {
-        id: "s5",
-        problem: "Your onboarding process costs you time and clients due to manual setup and follow-ups.",
-        solution: "We build automated onboarding sequences that guide new clients through setup without your team's involvement.",
-        outcome: "Onboarding time drops by 70%. New clients are productive from day one."
-      },
-      {
-        id: "s6",
-        problem: "Your team answers the same routine questions every day — burning time and patience.",
-        solution: "We deploy AI-powered self-service that handles common questions instantly, escalating only the complex cases.",
-        outcome: "Support tickets drop by 60%. Your team handles 3x the volume with the same headcount."
+        title: "Systematize Knowledge",
+        description: "Turn tribal knowledge into reliable, repeatable processes.",
+        outcome: "Operations continue regardless of who is available. New hires get productive faster."
       }
     ]
   },
