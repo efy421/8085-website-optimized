@@ -86,6 +86,18 @@ const landingContent = {
         problem: "Key processes depend on specific individuals, creating risk when people are unavailable.",
         solution: "We document and systematize tribal knowledge into reliable, repeatable processes.",
         outcome: "Operations continue smoothly regardless of who's available. New hires get productive faster."
+      },
+      {
+        id: "s5",
+        problem: "Your onboarding process costs you time and clients due to manual setup and follow-ups.",
+        solution: "We build automated onboarding sequences that guide new clients through setup without your team's involvement.",
+        outcome: "Onboarding time drops by 70%. New clients are productive from day one."
+      },
+      {
+        id: "s6",
+        problem: "Your team answers the same routine questions every day — burning time and patience.",
+        solution: "We deploy AI-powered self-service that handles common questions instantly, escalating only the complex cases.",
+        outcome: "Support tickets drop by 60%. Your team handles 3x the volume with the same headcount."
       }
     ]
   },

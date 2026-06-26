@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { howWeWork } = landingContent;
@@ -7,18 +7,13 @@ function ProcessStep({ step, index, isVisible }) {
   return (
     <div
       className={`process-step ${isVisible ? 'process-step--visible' : ''}`}
-      style={{ '--step-index': index, '--step-delay': `${index * 0.2}s` }}
+      style={{ '--step-delay': `${index * 0.12}s` }}
     >
-      <div className="process-step__connector" aria-hidden="true">
-        <div className="process-step__connector-line" />
-        <div className="process-step__connector-dot" />
+      <div className="process-step__connector-dot" aria-hidden="true" />
+      <div className="process-step__number-wrap">
+        <span className="process-step__number">{step.number}</span>
       </div>
-      <div className="process-step__card">
-        <div className="process-step__card-glow" aria-hidden="true" />
-        <div className="agentic-card__signal-top" aria-hidden="true" />
-        <div className="process-step__number-wrap">
-          <span className="process-step__number">{step.number || String(index + 1).padStart(2, '0')}</span>
-        </div>
+      <div className="process-step__content">
         <h3 className="process-step__title">{step.title}</h3>
         <p className="process-step__desc">{step.description}</p>
       </div>
