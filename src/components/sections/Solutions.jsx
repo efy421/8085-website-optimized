@@ -23,21 +23,35 @@ function SolutionCard({ item, index, isVisible }) {
     >
       <div className="agentic-card__spotlight" aria-hidden="true" />
       <div className="agentic-card__signal-top" aria-hidden="true" />
-      <div className="solution-card__connector" aria-hidden="true">
-        <div className="solution-card__connector-line" />
-        <div className="solution-card__connector-dot" />
+      <div className="solution-card__bg-dots" aria-hidden="true" />
+      <div className="solution-card__problem">
+        <span className="solution-card__label">Challenge</span>
+        <p className="solution-card__problem-text">{item.problem}</p>
       </div>
-      <div className="agentic-card__icon-wrap">
-        <div className="agentic-card__icon-ring" aria-hidden="true" />
-        <div className="agentic-card__icon-pulse" aria-hidden="true" />
-        <div className="agentic-card__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+      <div className="solution-card__divider" aria-hidden="true">
+        <div className="solution-card__divider-line" />
+        <div className="solution-card__divider-arrow">
+          <svg viewBox="0 0 16 16" fill="none" width="12" height="12">
+            <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
       </div>
-      <h3 className="solution-card__title">{item.solution}</h3>
-      <p className="solution-card__desc">{item.outcome}</p>
+      <div className="solution-card__solution">
+        <div className="agentic-card__icon-wrap solution-card__icon">
+          <div className="agentic-card__icon-ring" aria-hidden="true" />
+          <div className="agentic-card__icon-pulse" aria-hidden="true" />
+          <div className="agentic-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+            </svg>
+          </div>
+        </div>
+        <h3 className="solution-card__title">{item.solution}</h3>
+        <div className="solution-card__outcome">
+          <span className="solution-card__outcome-label">Result</span>
+          <p className="solution-card__outcome-text">{item.outcome}</p>
+        </div>
+      </div>
     </div>
   );
 }

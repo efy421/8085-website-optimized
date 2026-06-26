@@ -1,35 +1,48 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { howWeWork } = landingContent;
 
-function TimelineStep({ step, index }) {
+function ProcessStep({ step, index, isVisible }) {
   return (
-    <div className={`timeline-step timeline-step--${index % 2 === 0 ? 'left' : 'right'} reveal`}>
-      <div className="timeline-step__node" aria-hidden="true">
-        <div className="timeline-step__node-dot" />
-        <div className="timeline-step__node-ring" />
-        <div className="timeline-step__node-pulse" />
+    <div
+      className={`process-step ${isVisible ? 'process-step--visible' : ''}`}
+      style={{ '--step-index': index, '--step-delay': `${index * 0.2}s` }}
+    >
+      <div className="process-step__connector" aria-hidden="true">
+        <div className="process-step__connector-line" />
+        <div className="process-step__connector-dot" />
       </div>
-      <div className="timeline-step__card">
-        <div className="timeline-step__signal" aria-hidden="true">
-          <svg viewBox="0 0 200 4" fill="none">
-            <line x1="0" y1="2" x2="200" y2="2" stroke="rgba(195,100,43,0.15)" strokeWidth="1" />
-            <line x1="0" y1="2" x2="200" y2="2" stroke="rgba(195,100,43,0.5)" strokeWidth="1.5" strokeDasharray="8 12">
-              <animate attributeName="stroke-dashoffset" from="20" to="0" dur="2s" repeatCount="indefinite" />
-            </line>
-          </svg>
+      <div className="process-step__card">
+        <div className="process-step__card-glow" aria-hidden="true" />
+        <div className="agentic-card__signal-top" aria-hidden="true" />
+        <div className="process-step__number-wrap">
+          <span className="process-step__number">{step.number || String(index + 1).padStart(2, '0')}</span>
         </div>
-        <div className="timeline-step__number">{step.number || String(index + 1).padStart(2, '0')}</div>
-        <h3 className="timeline-step__title">{step.title}</h3>
-        <p className="timeline-step__desc">{step.description}</p>
+        <h3 className="process-step__title">{step.title}</h3>
+        <p className="process-step__desc">{step.description}</p>
       </div>
     </div>
   );
 }
 
 export default function HowWeWork() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIsVisible(true); observer.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section section--how-we-work" id="how-we-work">
+    <section ref={sectionRef} className="section section--how-we-work" id="how-we-work">
       <div className="section__grid-bg" aria-hidden="true" />
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
@@ -52,13 +65,15 @@ export default function HowWeWork() {
           <h2 className="section-header__title">{howWeWork.headline}</h2>
           {howWeWork.description && <p className="section-header__subtitle">{howWeWork.description}</p>}
         </div>
-        <div className="timeline">
-          <div className="timeline__track" aria-hidden="true">
-            <div className="timeline__track-line" />
-            <div className="timeline__track-glow" />
+        <div className="process-flow">
+          <div className="process-flow__track" aria-hidden="true">
+            <div className={`process-flow__track-fill ${isVisible ? 'process-flow__track-fill--drawn' : ''}`} />
+          </div>
+          <div className="process-flow__track-glow" aria-hidden="true">
+            <div className={`process-flow__track-glow-fill ${isVisible ? 'process-flow__track-glow-fill--drawn' : ''}`} />
           </div>
           {howWeWork.steps.map((step, i) => (
-            <TimelineStep key={step.id} step={step} index={i} />
+            <ProcessStep key={step.id} step={step} index={i} isVisible={isVisible} />
           ))}
         </div>
       </div>
