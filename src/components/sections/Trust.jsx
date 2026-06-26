@@ -73,10 +73,23 @@ export default function Trust() {
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
       </div>
+      <div className="section__data-flow" aria-hidden="true">
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+      </div>
+      <div className="section__signal-dots" aria-hidden="true">
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{trust.badge}</span>
           <h2 className="section-header__headline">{trust.headline}</h2>
+          {trust.description && <p className="section-header__subtitle">{trust.description}</p>}
         </div>
 
         {trust.logos.length > 0 && (

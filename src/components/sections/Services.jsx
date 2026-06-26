@@ -56,10 +56,23 @@ export default function Services() {
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
       </div>
+      <div className="section__data-flow" aria-hidden="true">
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+      </div>
+      <div className="section__signal-dots" aria-hidden="true">
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{services.badge}</span>
           <h2 className="section-header__title">{services.headline}</h2>
+          {services.description && <p className="section-header__subtitle">{services.description}</p>}
         </div>
         <div className="services-grid">
           {services.items.map((item, i) => (

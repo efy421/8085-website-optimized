@@ -34,10 +34,23 @@ export default function HowWeWork() {
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
       </div>
+      <div className="section__data-flow" aria-hidden="true">
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+      </div>
+      <div className="section__signal-dots" aria-hidden="true">
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{howWeWork.badge}</span>
           <h2 className="section-header__title">{howWeWork.headline}</h2>
+          {howWeWork.description && <p className="section-header__subtitle">{howWeWork.description}</p>}
         </div>
         <div className="timeline">
           <div className="timeline__track" aria-hidden="true">

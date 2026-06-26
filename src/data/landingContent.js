@@ -61,6 +61,7 @@ const landingContent = {
   solutions: {
     badge: "Solutions",
     headline: "How we fix this",
+    description: "We tackle the root cause — automating workflows, connecting systems, and eliminating manual overhead so your team can focus on growth.",
     items: [
       {
         id: "s1",
@@ -92,6 +93,7 @@ const landingContent = {
   howWeWork: {
     badge: "Process",
     headline: "How we work",
+    description: "A structured approach that delivers results — from discovery to continuous optimization.",
     steps: [
       { id: "w1", number: "01", title: "Discover", description: "We learn your business, workflows, and where the biggest opportunities are." },
       { id: "w2", number: "02", title: "Design", description: "We map out solutions that fit your operations — not generic templates." },
@@ -104,6 +106,7 @@ const landingContent = {
   services: {
     badge: "Services",
     headline: "What we help with",
+    description: "Tailored automation solutions that fit your business — no cookie-cutter approaches.",
     items: [
       {
         id: "sv1",
@@ -141,6 +144,7 @@ const landingContent = {
   projects: {
     badge: "Case Studies",
     headline: "Proven results across industries",
+    description: "Real outcomes for real businesses — see how we've helped teams transform their operations.",
     items: [
       {
         id: "cs1",
@@ -193,6 +197,7 @@ const landingContent = {
   trust: {
     badge: "Trust",
     headline: "Trusted by teams building the future",
+    description: "We've earned the confidence of organizations across industries through consistent delivery.",
     logos: [
       { name: "Audi", src: `${import.meta.env.BASE_URL}images/partners-logo-audi.svg` },
       { name: "DHL", src: `${import.meta.env.BASE_URL}images/partners-logo-dhl.svg` },

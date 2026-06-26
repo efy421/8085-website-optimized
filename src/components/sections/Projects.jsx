@@ -60,10 +60,23 @@ export default function Projects() {
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
       </div>
+      <div className="section__data-flow" aria-hidden="true">
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+      </div>
+      <div className="section__signal-dots" aria-hidden="true">
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{projects.badge}</span>
           <h2 className="section-header__title">{projects.headline}</h2>
+          {projects.description && <p className="section-header__subtitle">{projects.description}</p>}
         </div>
         <div className="cases-grid">
           {projects.items.map((study, i) => (

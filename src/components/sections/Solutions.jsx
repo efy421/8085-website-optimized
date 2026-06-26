@@ -62,10 +62,23 @@ export default function Solutions() {
       <div className="section__signal-current" aria-hidden="true">
         <div className="section__signal-wash" />
       </div>
+      <div className="section__data-flow" aria-hidden="true">
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+        <div className="section__data-flow-line" />
+      </div>
+      <div className="section__signal-dots" aria-hidden="true">
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+        <div className="section__signal-dot" />
+      </div>
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{solutions.badge}</span>
           <h2 className="section-header__title">{solutions.headline}</h2>
+          {solutions.description && <p className="section-header__subtitle">{solutions.description}</p>}
         </div>
         <div className="solution-grid">
           {solutions.items.map((item, i) => (
