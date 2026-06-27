@@ -1,46 +1,14 @@
-import { useState, useRef, useLayoutEffect, useCallback } from 'react';
+import { useState } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { faq } = landingContent;
 
-function FAQItem({ item, index, isOpen, onToggle }) {
-  const answerRef = useRef(null);
-  const [height, setHeight] = useState(0);
-
-  useLayoutEffect(() => {
-    if (answerRef.current) {
-      setHeight(answerRef.current.scrollHeight);
-    }
-  }, [isOpen]);
-
-  return (
-    <article className={`faq__item reveal ${isOpen ? 'faq__item--open' : ''}`} key={item.id}>
-      <button
-        className="faq__item-question"
-        type="button"
-        aria-expanded={isOpen}
-        onClick={() => onToggle(index)}
-      >
-        <span>{item.question}</span>
-        <span className="faq__item-icon" aria-hidden="true">+</span>
-      </button>
-      <div
-        className="faq__item-answer"
-        role="region"
-        style={{ maxHeight: isOpen ? height : 0 }}
-      >
-        <p ref={answerRef}>{item.answer}</p>
-      </div>
-    </article>
-  );
-}
-
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const handleToggle = useCallback((index) => {
+  const handleToggle = (index) => {
     setOpenIndex((prev) => (prev === index ? null : index));
-  }, []);
+  };
 
   return (
     <section className="faq" id="faq">
@@ -51,13 +19,20 @@ export default function FAQ() {
         </div>
         <div className="faq__list">
           {faq.items.map((item, i) => (
-            <FAQItem
-              key={item.id}
-              item={item}
-              index={i}
-              isOpen={openIndex === i}
-              onToggle={handleToggle}
-            />
+            <article className={`faq__item reveal ${openIndex === i ? 'faq__item--open' : ''}`} key={item.id}>
+              <button
+                className="faq__item-question"
+                type="button"
+                aria-expanded={openIndex === i}
+                onClick={() => handleToggle(i)}
+              >
+                <span>{item.question}</span>
+                <span className="faq__item-icon" aria-hidden="true">+</span>
+              </button>
+              <div className="faq__item-answer" role="region">
+                <p>{item.answer}</p>
+              </div>
+            </article>
           ))}
         </div>
       </div>

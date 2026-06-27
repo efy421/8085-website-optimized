@@ -20,6 +20,10 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const handleStartConversation = () => {
+    setIsVoiceAgentVisible(true);
+  };
+
   const handleCloseVoiceAgent = () => {
     setIsVoiceAgentVisible(false);
   };
@@ -31,7 +35,7 @@ function App() {
           {showPrivacyPolicy ? (
             <PrivacyPolicy />
           ) : (
-            <LandingPage />
+            <LandingPage onStartConversation={handleStartConversation} />
           )}
         </div>
 

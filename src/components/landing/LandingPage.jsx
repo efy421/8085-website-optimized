@@ -12,7 +12,7 @@ import CTA from '../sections/CTA';
 import Footer from './Footer';
 import useScrollReveal from '../../hooks/useScrollReveal';
 
-export default function LandingPage() {
+export default function LandingPage({ onStartConversation }) {
   useScrollReveal();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function LandingPage() {
       </div>
       <main id="main-content">
         <Navbar />
-        <Hero />
+        <Hero onStartConversation={onStartConversation} />
         <Problems />
         <Solutions />
         <HowWeWork />
