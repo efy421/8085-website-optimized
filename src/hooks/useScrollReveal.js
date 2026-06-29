@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 export default function useScrollReveal() {
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealClasses = ['.reveal', '.reveal-left', '.reveal-right', '.reveal-scale'];
+
     if (prefersReduced) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+      document.querySelectorAll(revealClasses.join(',')).forEach(el => el.classList.add('revealed'));
       return;
     }
 
@@ -17,10 +19,10 @@ export default function useScrollReveal() {
           }
         });
       },
-      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
 
-    const elements = document.querySelectorAll('.reveal');
+    const elements = document.querySelectorAll(revealClasses.join(','));
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();

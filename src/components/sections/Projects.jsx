@@ -1,30 +1,31 @@
-import { useRef, useCallback } from 'react';
 import landingContent from '../../data/landingContent';
 
 const { projects } = landingContent;
 
+const overlayGradients = [
+  'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+  'linear-gradient(135deg, #1a2e1a 0%, #1a3a1a 50%, #0d2818 100%)',
+  'linear-gradient(135deg, #2e1a1a 0%, #3a1a1a 50%, #280d0d 100%)',
+];
+
+const patternStyles = [
+  { '--pattern-opacity': '0.08', '--pattern-color': 'rgba(255,255,255,0.3)' },
+  { '--pattern-opacity': '0.06', '--pattern-color': 'rgba(255,255,255,0.25)' },
+  { '--pattern-opacity': '0.07', '--pattern-color': 'rgba(255,255,255,0.2)' },
+];
+
 function CaseCard({ study, index }) {
-  const cardRef = useRef(null);
-
-  const handleMouseMove = useCallback((e) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--spotlight-x', `${e.clientX - rect.left}px`);
-    card.style.setProperty('--spotlight-y', `${e.clientY - rect.top}px`);
-  }, []);
-
   return (
-    <div
-      ref={cardRef}
-      className="agentic-card case-card reveal"
-      style={{ '--card-index': index }}
-      onMouseMove={handleMouseMove}
-    >
-      <div className="agentic-card__spotlight" aria-hidden="true" />
-      <div className="agentic-card__signal-top" aria-hidden="true" />
-      <div className="case-card__image" style={{ background: study.imageColor || '#1a1a2e' }}>
-        <div className="case-card__image-scan" aria-hidden="true" />
+    <div className="case-card reveal" style={{ '--card-index': index }}>
+      <div
+        className="case-card__image"
+        style={{
+          background: overlayGradients[index % overlayGradients.length],
+          '--pattern-opacity': patternStyles[index % patternStyles.length]['--pattern-opacity'],
+          '--pattern-color': patternStyles[index % patternStyles.length]['--pattern-color'],
+        }}
+      >
+        <div className="case-card__image-pattern" aria-hidden="true" />
         <div className="case-card__image-label">
           <span className="case-card__image-industry">{study.industry}</span>
           <span className="case-card__image-client">{study.client}</span>
@@ -46,7 +47,7 @@ function CaseCard({ study, index }) {
           ))}
         </div>
         {study.cta && (
-          <a className="case-card__cta btn btn--secondary" href={study.cta.href}>{study.cta.label}</a>
+          <a className="case-card__cta btn btn--primary" href={study.cta.href} aria-label={`Read full case study: ${study.title}`}>{study.cta.label}</a>
         )}
       </div>
     </div>
@@ -55,23 +56,7 @@ function CaseCard({ study, index }) {
 
 export default function Projects() {
   return (
-    <section className="section section--projects" id="projects">
-      <div className="section__grid-bg" aria-hidden="true" />
-      <div className="section__signal-current" aria-hidden="true">
-        <div className="section__signal-wash" />
-      </div>
-      <div className="section__data-flow" aria-hidden="true">
-        <div className="section__data-flow-line" />
-        <div className="section__data-flow-line" />
-        <div className="section__data-flow-line" />
-      </div>
-      <div className="section__signal-dots" aria-hidden="true">
-        <div className="section__signal-dot" />
-        <div className="section__signal-dot" />
-        <div className="section__signal-dot" />
-        <div className="section__signal-dot" />
-        <div className="section__signal-dot" />
-      </div>
+    <section className="section section--alt" id="projects" aria-label="Case studies and projects">
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{projects.badge}</span>

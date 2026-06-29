@@ -1,146 +1,197 @@
+const founders = [
+  {
+    name: "Farhan Shamim",
+    role: "Chief Technology Officer",
+    description: "Engineering AI architectures that scale enterprise operations without adding headcount.",
+    linkedin: "https://linkedin.com/in/farhanshamim",
+    image: `${import.meta.env.BASE_URL}images/founder-farhan.jpg`
+  },
+  {
+    name: "Sameer Shamim",
+    role: "Chief Operating Officer",
+    description: "Designing lean operational frameworks that maximize ROI from day one.",
+    linkedin: "https://linkedin.com/in/sameershamim",
+    image: `${import.meta.env.BASE_URL}images/founder-sameer.jpg`
+  },
+  {
+    name: "Essam Shamim",
+    role: "Chief Marketing Officer",
+    description: "Building market strategies that translate technical excellence into client growth.",
+    linkedin: "https://linkedin.com/in/essamshamim",
+    image: `${import.meta.env.BASE_URL}images/founder-essam.jpg`
+  }
+];
+
+const securityItems = [
+  {
+    title: "Data Sovereignty",
+    icon: "shield",
+    description: "All AI agents run inside your own infrastructure. Your data never leaves your environment."
+  },
+  {
+    title: "Enterprise Compliance",
+    icon: "check-circle",
+    description: "SOC2-ready architecture built to meet the compliance requirements of regulated industries."
+  },
+  {
+    title: "End-to-End Encryption",
+    icon: "lock",
+    description: "Every data pipeline is encrypted in transit and at rest. Zero exposure points."
+  }
+];
+
+const integrationIcons = [
+  { name: "n8n", light: `${import.meta.env.BASE_URL}images/tech-n8n.svg`, dark: `${import.meta.env.BASE_URL}images/tech-n8n.svg` },
+  { name: "Apify", light: `${import.meta.env.BASE_URL}images/tech-apify.svg`, dark: `${import.meta.env.BASE_URL}images/tech-apify.svg` },
+  { name: "OpenAI", light: `${import.meta.env.BASE_URL}images/tech-openai.svg`, dark: `${import.meta.env.BASE_URL}images/tech-openai.svg` },
+  { name: "Make.com", light: `${import.meta.env.BASE_URL}images/tech-make.svg`, dark: `${import.meta.env.BASE_URL}images/tech-make.svg` },
+  { name: "Python", light: `${import.meta.env.BASE_URL}images/tech-python.svg`, dark: `${import.meta.env.BASE_URL}images/tech-python.svg` },
+  { name: "AWS / GCP", light: `${import.meta.env.BASE_URL}images/tech-cloud.svg`, dark: `${import.meta.env.BASE_URL}images/tech-cloud.svg` }
+];
+
 const landingContent = {
   hero: {
-    badge: "AI Automation Agency",
-    headline: "Increase efficiency by 80%. Decrease cost by 85%.",
-    headlineEmphasis: ["80%", "85%"],
-    subheadline: "We automate repetitive work, streamline operations, and build AI-powered systems so your team focuses on what matters — growth.",
+    badge: "AI & Automation Agency",
+    headline: "Scale your operations without scaling your headcount.",
+    headlineEmphasis: ["operations", "headcount."],
+    description: "We engineer intelligent agents and seamless automation workflows that eliminate repetitive tasks, slash costs by 85%, and let your team focus on growth.",
     signals: [
-      "Start with one workflow",
-      "Built around your process",
-      "You own what we build"
+      "Custom workflow architecture",
+      "Seamless API integrations",
+      "You own the final system"
     ],
-    primaryCTA: { label: "Book Consultation", href: "#contact" },
-    secondaryCTA: { label: "See How We Work", href: "#process" },
+    primaryCTA: { label: "Book a Call", href: "#contact" },
+    secondaryCTA: { label: "Explore Our Process", href: "#how-we-work" },
     trustRow: {
       metrics: [
         { value: "80%", label: "Efficiency Increase" },
-        { value: "85%", label: "Cost Decrease" },
-        { value: "4–12wk", label: "To First Results" }
+        { value: "85%", label: "Cost Reduction" },
+        { value: "4–12wk", label: "To First ROI" }
       ]
     }
   },
 
   problems: {
-    badge: "Challenges",
-    headline: "Sound familiar?",
-    description: "These are the problems we solve every day.",
+    badge: "The Breakdown",
+    headline: "Sound painfully familiar?",
+    description: "These are the operational bottlenecks draining your margins every single day.",
     items: [
       {
         id: "p1",
-        title: "Your team wastes hours on repetitive tasks",
-        description: "Data entry, copy-pasting between tools, manual reports — the work that drains energy and steals time from strategy."
+        title: "Drowning in data entry",
+        description: "Copy-pasting between CRMs, spreadsheets, and emails is stealing thousands of hours from your team's strategic work."
       },
       {
         id: "p2",
-        title: "Growth means more complexity, not less",
-        description: "Every new client, product, or hire adds another layer of manual processes. Your team works harder just to stay in place."
+        title: "Growth equals chaos",
+        description: "Every new client or hire adds another layer of manual overhead. Your team is working harder just to stay in the exact same place."
       },
       {
         id: "p3",
-        title: "Critical knowledge lives in people's heads",
-        description: "When someone is out, sick, or leaves — operations suffer. Tribal knowledge creates single points of failure."
+        title: "Empty sales pipelines",
+        description: "Lead generation is inconsistent because manual outreach takes too much time, and follow-ups constantly fall through the cracks."
       },
       {
         id: "p4",
-        title: "Your tools don't talk to each other",
-        description: "Data lives in spreadsheets, emails, and separate systems. Your team wastes time reconciling information instead of using it."
+        title: "Siloed software systems",
+        description: "Your tech stack doesn't communicate. Your team spends more time reconciling fragmented data than actually using it to make decisions."
       },
       {
         id: "p5",
-        title: "Manual errors cost you clients and revenue",
-        description: "Missed follow-ups, incorrect data, delayed responses — the small mistakes that compound into big problems."
+        title: "Costly human errors",
+        description: "Missed emails, incorrect data logs, and delayed responses—small manual mistakes that compound into lost clients and revenue."
       },
       {
         id: "p6",
-        title: "Hiring more people isn't the answer",
-        description: "You need scale, not headcount. Adding people to broken processes just multiplies the overhead."
+        title: "Hiring isn't the fix",
+        description: "You need scalable systems, not just more headcount. Throwing more people at a broken process just multiplies the confusion."
       }
     ]
   },
 
   solutions: {
-    badge: "Solutions",
-    headline: "How we fix this",
-    description: "We tackle the root cause — automating workflows, connecting systems, and eliminating manual overhead so your team can focus on growth.",
+    badge: "Our Solutions",
+    headline: "How we engineer the fix",
+    description: "We don't just patch problems; we eliminate the root cause through intelligent automation, data scraping, and agentic workflows.",
     items: [
       {
         id: "s1",
-        problem: "Your team spends hours each week on repetitive data entry and manual handoffs between systems.",
-        title: "Automate Workflows",
-        description: "Connect your tools and eliminate manual steps entirely.",
-        outcome: "Your team saves 15–20 hours per week. Processes complete in minutes instead of days."
+        problem: "Your team spends hours each week on repetitive data entry and manual handoffs.",
+        title: "End-to-End Automation",
+        description: "We connect your entire tech stack, eliminating manual touchpoints so work flows instantly.",
+        outcome: "Processes that took days are executed flawlessly in seconds. Your team gets 20+ hours back every week."
       },
       {
         id: "s2",
-        problem: "Critical information is scattered across spreadsheets, emails, and different software platforms.",
-        title: "Unify Your Data",
-        description: "Integrate scattered information into a single trusted source available to everyone.",
-        outcome: "Faster decisions with accurate, real-time information. No more chasing data across five tools."
+        problem: "Sales reps waste time manually hunting for leads and managing outreach.",
+        title: "Automated Lead Generation",
+        description: "We build dynamic outreach architectures that scrape, qualify, and engage prospects automatically.",
+        outcome: "A consistently full pipeline of qualified leads, allowing your sales team to focus purely on closing."
       },
       {
         id: "s3",
-        problem: "Growth adds complexity, errors, and headcount requirements faster than revenue.",
-        title: "Scale Operations",
-        description: "Handle increased volume without proportional headcount increases.",
-        outcome: "You scale revenue while keeping costs flat. Growth becomes a strength, not a burden."
+        problem: "Growth adds complexity and requires expensive new hires to manage the volume.",
+        title: "Scalable Infrastructure",
+        description: "Deploy AI agents and automated systems that handle infinite volume without breaking a sweat.",
+        outcome: "You scale your client base and revenue while keeping operational costs completely flat."
       },
       {
         id: "s4",
-        problem: "Key processes depend on specific individuals, creating risk when people are unavailable.",
-        title: "Systematize Knowledge",
-        description: "Turn tribal knowledge into reliable, repeatable processes.",
-        outcome: "Operations continue regardless of who is available. New hires get productive faster."
+        problem: "Critical data is trapped on third-party websites or buried in unstructured documents.",
+        title: "Advanced Data Extraction",
+        description: "Custom web scraping and parsing tools that pull exactly the data you need from anywhere on the web.",
+        outcome: "Clean, structured data delivered directly to your database, powering faster, more accurate business decisions."
       }
     ]
   },
 
   howWeWork: {
-    badge: "Process",
-    headline: "How we work",
-    description: "A structured approach that delivers results — from discovery to continuous optimization.",
+    badge: "The Process",
+    headline: "How we deploy",
+    description: "A lean, engineering-first approach designed to get you maximum ROI with zero operational disruption.",
     steps: [
-      { id: "w1", number: "01", title: "Discover", description: "We learn your business, workflows, and where the biggest opportunities are." },
-      { id: "w2", number: "02", title: "Design", description: "We map out solutions that fit your operations — not generic templates." },
-      { id: "w3", number: "03", title: "Build", description: "We develop and test with your real data, in your real environment." },
-      { id: "w4", number: "04", title: "Deploy", description: "We launch with zero disruption to your team. Training included." },
-      { id: "w5", number: "05", title: "Optimize", description: "We refine based on real performance. Your systems get better over time." }
+      { id: "w1", number: "01", title: "Audit", description: "We analyze your current tech stack and pinpoint the exact workflows bleeding time and money." },
+      { id: "w2", number: "02", title: "Architect", description: "We design a custom automation blueprint tailored specifically to your business logic." },
+      { id: "w3", number: "03", title: "Engineer", description: "We build, integrate, and stress-test the AI agents and automation logic in a secure environment." },
+      { id: "w4", number: "04", title: "Launch", description: "Seamless deployment into your live operations, complete with team training and documentation." },
+      { id: "w5", number: "05", title: "Optimize", description: "Continuous monitoring and refinement to ensure your new systems scale effortlessly." }
     ]
   },
 
   services: {
-    badge: "Services",
-    headline: "What we help with",
-    description: "Tailored automation solutions that fit your business — no cookie-cutter approaches.",
+    badge: "Core Expertise",
+    headline: "Our technical capabilities",
+    description: "We build robust, tailored systems. No duct-tape solutions, no cookie-cutter templates.",
     items: [
       {
         id: "sv1",
-        title: "AI Chatbots",
-        description: "Intelligent chatbots that handle customer inquiries, qualify leads, and provide instant support — 24/7.",
-        outcome: "Your team focuses on complex conversations while AI handles the routine."
+        title: "B2B Lead Gen & Outreach",
+        description: "Automated data extraction and dynamic LinkedIn/Email outreach architectures that keep your sales pipeline full.",
+        outcome: "Consistent, high-quality appointments booked on autopilot."
       },
       {
         id: "sv2",
-        title: "Workflow Automation",
-        description: "We connect your tools and eliminate manual handoffs so work flows automatically from start to finish.",
-        outcome: "Processes that used to take days now happen in minutes, without human intervention."
+        title: "Web Scraping & Data Extraction",
+        description: "Advanced scraping workflows leveraging tools like Apify and PhantomBuster to pull critical market or client data.",
+        outcome: "Structured, real-time data delivered directly to your CRM without manual input."
       },
       {
         id: "sv3",
-        title: "Sales Funnel Optimization",
-        description: "We automate lead capture, nurturing, and follow-up so no opportunity falls through the cracks.",
-        outcome: "More leads converted, faster response times, and a pipeline that runs itself."
+        title: "AI Voice & Chat Agents",
+        description: "Intelligent, conversational AI deployed across your channels to handle customer inquiries, qualify leads, and provide 24/7 support.",
+        outcome: "Instant response times and massive reductions in customer support overhead."
       },
       {
         id: "sv4",
-        title: "Email Marketing Automation",
-        description: "Targeted, personalized email sequences that nurture prospects and retain customers automatically.",
-        outcome: "Higher open rates, better engagement, and revenue that grows while you sleep."
+        title: "Complex Workflow Automation",
+        description: "Deep API integrations connecting your disparate software tools so data moves seamlessly from trigger to final action.",
+        outcome: "Zero manual handoffs, eliminating human error and drastically speeding up delivery."
       },
       {
         id: "sv5",
-        title: "Custom AI Tools",
-        description: "Bespoke AI solutions built for your specific workflows — from data analysis to process automation.",
-        outcome: "Tools that do exactly what your business needs, not what a generic platform allows."
+        title: "Custom AI Tooling",
+        description: "Bespoke AI solutions and internal dashboards built specifically around your unique operational bottlenecks.",
+        outcome: "Proprietary software assets that give your business a permanent competitive advantage."
       }
     ]
   },
@@ -148,7 +199,7 @@ const landingContent = {
   projects: {
     badge: "Case Studies",
     headline: "Proven results across industries",
-    description: "Real outcomes for real businesses — see how we've helped teams transform their operations.",
+    description: "Real outcomes for real businesses. Here is how we transform operations.",
     items: [
       {
         id: "cs1",
@@ -199,9 +250,10 @@ const landingContent = {
   },
 
   trust: {
-    badge: "Trust",
-    headline: "Trusted by teams building the future",
-    description: "We've earned the confidence of organizations across industries through consistent delivery.",
+    badge: "The Proof",
+    headline: "Trusted by forward-thinking teams",
+    description: "We've earned the confidence of organizations across the globe by consistently delivering scalable infrastructure.",
+    founders,
     logos: [
       { name: "Audi", src: `${import.meta.env.BASE_URL}images/partners-logo-audi.svg` },
       { name: "DHL", src: `${import.meta.env.BASE_URL}images/partners-logo-dhl.svg` },
@@ -213,29 +265,43 @@ const landingContent = {
     testimonials: [
       {
         id: "t1",
-        quote: "The team understood our business before suggesting solutions. That made all the difference. They didn't just automate — they transformed how we work.",
+        quote: "The 8085.ai team understood our business logic before writing a single line of code. They didn't just automate tasks—they completely transformed our operational capacity.",
         author: "Operations Director",
         company: "Financial Services"
       },
       {
         id: "t2",
-        quote: "What used to take our team hours now happens automatically. The difference is night and day. Our team finally has time for strategic work.",
-        author: "COO",
-        company: "Healthcare Organization"
+        quote: "Our lead generation used to require three full-time employees. Now, the scraping and outreach workflows they built handle it flawlessly in the background.",
+        author: "VP of Sales",
+        company: "B2B SaaS"
       },
       {
         id: "t3",
-        quote: "They removed bottlenecks we didn't even know we had. Our processes run smoother than ever, and our team morale has improved significantly.",
+        quote: "They found and eliminated bottlenecks we didn't even know we had. Our processes run smoother than ever, and our margins have drastically improved.",
         author: "CEO",
-        company: "Logistics Company"
+        company: "Logistics Firm"
       }
     ],
     metrics: [
       { value: "80%", label: "Avg. Efficiency Gain" },
       { value: "85%", label: "Cost Reduction" },
-      { value: "4–12wk", label: "To First Results" },
+      { value: "4–12wk", label: "To First ROI" },
       { value: "100%", label: "Client Retention" }
     ]
+  },
+
+  security: {
+    badge: "Enterprise Security",
+    headline: "Built for the most demanding compliance environments.",
+    description: "Your infrastructure, your data, your control. We architect systems that meet enterprise-grade security requirements out of the box.",
+    items: securityItems
+  },
+
+  integrationHub: {
+    badge: "Your Stack",
+    headline: "Integrates with the tools you already use.",
+    description: "We connect directly to your existing tech stack via APIs. No migration required.",
+    items: integrationIcons
   },
 
   faq: {
@@ -244,71 +310,61 @@ const landingContent = {
     items: [
       {
         id: "f1",
-        question: "How long do projects take?",
-        answer: "Most projects complete in 4–12 weeks, depending on scope and complexity. We start with smaller, high-impact wins and expand from there. You see results before the full project finishes."
+        question: "How long do implementation projects take?",
+        answer: "Most automated workflows are deployed within 4–12 weeks. We prioritize low-hanging fruit first, ensuring you see tangible ROI while we build out the more complex architectures."
       },
       {
         id: "f2",
-        question: "Can my existing systems remain?",
-        answer: "Yes. We work with your current tools and systems. Our goal is to improve how they work together, not replace everything. We integrate with what you already have."
+        question: "Do we need to replace our current software?",
+        answer: "No. We integrate directly with your existing tech stack via APIs. Our goal is to make your current tools talk to each other seamlessly, not force you to migrate to new platforms."
       },
       {
         id: "f3",
-        question: "Which industries do you work with?",
-        answer: "We work across industries — finance, healthcare, logistics, e-commerce, and operations teams. Our approach works wherever there are repetitive processes and manual workflows."
+        question: "How do you handle web scraping and lead generation?",
+        answer: "We build resilient, compliant data extraction pipelines. Whether pulling market data or automating B2B outreach, we ensure the data is clean, structured, and routed directly into your CRM."
       },
       {
         id: "f4",
-        question: "What happens after I contact you?",
-        answer: "We schedule a 30-minute discovery call to understand your operations and challenges. From there, we identify quick wins and outline a clear path forward. No pressure, no sales pitch."
+        question: "What happens during the initial consultation?",
+        answer: "We conduct a 30-minute technical discovery call to map your current bottlenecks. If we can solve them, we'll outline a clear architectural plan. No aggressive sales pitches."
       },
       {
         id: "f5",
-        question: "How do projects work?",
-        answer: "We follow a structured process: discover your needs, design solutions, build and test with real data, deploy with minimal disruption, and optimize based on results. You stay involved throughout."
+        question: "Who owns the automations once they are built?",
+        answer: "You do. We build the infrastructure inside your accounts, meaning you retain full ownership and control of the data, the AI agents, and the workflows."
       },
       {
         id: "f6",
         question: "Do you provide ongoing support?",
-        answer: "Yes. We offer maintenance, optimization, and support packages after launch. Your systems continue running smoothly, and we refine them as your business evolves."
-      },
-      {
-        id: "f7",
-        question: "What if I'm not sure what I need?",
-        answer: "That's exactly why we start with discovery. We help you identify where improvements will have the biggest impact. Many clients come to us knowing something is broken but not knowing where to start."
-      },
-      {
-        id: "f8",
-        question: "How does pricing work?",
-        answer: "Pricing depends on project scope and complexity. We provide clear estimates after discovery so you know exactly what to expect. No hidden fees, no surprise costs."
+        answer: "Absolutely. APIs update and business logic changes. We offer retainer packages to monitor, maintain, and continuously optimize your systems so they never break."
       }
     ]
   },
 
   cta: {
-    headline: "Ready to stop doing manual work?",
-    description: "Let's identify where automation will save your team the most time and money. A 30-minute call to start.",
-    primaryCTA: { label: "Book Consultation", href: "#contact" },
+    headline: "Stop paying humans to act like robots.",
+    description: "Let's engineer a system that scales your business without scaling your payroll. Book a technical discovery call today.",
+    primaryCTA: { label: "Book a Call", href: "#contact" },
     secondaryCTA: { label: "Email Us", href: "mailto:hello@8085.ai" }
   },
 
   footer: {
-    brandDescription: "8085 automates repetitive work and builds AI-powered systems so businesses can focus on growth.",
+    brandDescription: "8085.ai engineers intelligent agents and automated workflows so businesses can scale efficiently and focus on growth.",
     servicesLinks: [
-      { label: "AI Chatbots", href: "#services" },
+      { label: "B2B Lead Generation", href: "#services" },
+      { label: "Web Scraping", href: "#services" },
+      { label: "AI Voice Agents", href: "#services" },
       { label: "Workflow Automation", href: "#services" },
-      { label: "Sales Funnels", href: "#services" },
-      { label: "Email Marketing", href: "#services" },
-      { label: "Custom AI Tools", href: "#services" }
+      { label: "Custom Tooling", href: "#services" }
     ],
     companyLinks: [
       { label: "About", href: "#" },
-      { label: "Projects", href: "#projects" },
-      { label: "Process", href: "#process" },
+      { label: "Case Studies", href: "#projects" },
+      { label: "Our Process", href: "#how-we-work" },
       { label: "Contact", href: "#contact" }
     ],
     connectLinks: [
-      { label: "Book Consultation", href: "#contact" },
+      { label: "Book a Call", href: "#contact" },
       { label: "hello@8085.ai", href: "mailto:hello@8085.ai" },
       { label: "LinkedIn", href: "https://linkedin.com/company/8085ai", external: true }
     ],

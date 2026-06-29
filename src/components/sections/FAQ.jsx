@@ -11,11 +11,11 @@ export default function FAQ() {
   };
 
   return (
-    <section className="faq" id="faq">
+    <section className="section" id="faq" aria-label="Frequently asked questions">
       <div className="container">
         <div className="section-header reveal">
           <span className="badge">{faq.badge}</span>
-          <h2 className="section-header__headline">{faq.headline}</h2>
+          <h2 className="section-header__title">{faq.headline}</h2>
         </div>
         <div className="faq__list">
           {faq.items.map((item, i) => (
@@ -23,13 +23,15 @@ export default function FAQ() {
               <button
                 className="faq__item-question"
                 type="button"
+                id={`faq-q-${item.id}`}
                 aria-expanded={openIndex === i}
+                aria-controls={`faq-a-${item.id}`}
                 onClick={() => handleToggle(i)}
               >
                 <span>{item.question}</span>
                 <span className="faq__item-icon" aria-hidden="true">+</span>
               </button>
-              <div className="faq__item-answer" role="region">
+              <div className="faq__item-answer" role="region" id={`faq-a-${item.id}`} aria-labelledby={`faq-q-${item.id}`}>
                 <p>{item.answer}</p>
               </div>
             </article>

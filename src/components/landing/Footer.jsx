@@ -8,8 +8,8 @@ export default function Footer() {
       <div className="container">
         <div className="site-footer__grid">
           <div className="site-footer__brand">
-            <a className="site-footer__logo" href="#hero" aria-label="8085 homepage">
-              8085
+            <a className="site-footer__logo" href="#hero" aria-label="8085.ai homepage">
+              8085.ai
             </a>
             <p className="site-footer__description">{footer.brandDescription}</p>
           </div>
@@ -60,7 +60,7 @@ export default function Footer() {
 
         <div className="site-footer__bottom">
           <p className="site-footer__copyright">
-            &copy; {new Date().getFullYear()} 8085. {footer.copyright}
+            &copy; {new Date().getFullYear()} 8085.ai. All rights reserved.
           </p>
         </div>
       </div>

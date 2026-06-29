@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ConfigProvider } from './lib/config.jsx';
 import ErrorBoundary from './components/ErrorBoundary';
 import LandingPage from './components/landing/LandingPage';
-import VoiceAgentOverlay from './components/VoiceAgentOverlay';
 import PrivacyPolicy from './components/PrivacyPolicy';
 
 function App() {
-  const [isVoiceAgentVisible, setIsVoiceAgentVisible] = useState(false);
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
 
   useEffect(() => {
@@ -20,14 +18,6 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const handleStartConversation = () => {
-    setIsVoiceAgentVisible(true);
-  };
-
-  const handleCloseVoiceAgent = () => {
-    setIsVoiceAgentVisible(false);
-  };
-
   return (
     <ConfigProvider>
       <ErrorBoundary fallbackId="main-app">
@@ -35,14 +25,9 @@ function App() {
           {showPrivacyPolicy ? (
             <PrivacyPolicy />
           ) : (
-            <LandingPage onStartConversation={handleStartConversation} />
+            <LandingPage />
           )}
         </div>
-
-        <VoiceAgentOverlay
-          isVisible={isVoiceAgentVisible}
-          onClose={handleCloseVoiceAgent}
-        />
       </ErrorBoundary>
     </ConfigProvider>
   );

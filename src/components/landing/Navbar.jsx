@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Process', href: '#process' },
+  { label: 'Process', href: '#how-we-work' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -27,22 +27,25 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} aria-label="Primary navigation">
       <div className="container navbar__inner">
-        <a className="navbar__logo" href="#hero" aria-label="8085 homepage">
-          8085
+        <a className="navbar__logo" href="#hero" aria-label="8085.ai homepage">
+          8085.ai
         </a>
 
         <ul className="navbar__links" role="list">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a className="navbar__link" href={link.href} onClick={handleNavClick}>
-                {link.label}
+                <span className="navbar__link-text">{link.label}</span>
               </a>
             </li>
           ))}
         </ul>
 
         <a className="btn btn--primary navbar__cta" href="#contact">
-          Book Consultation
+          Book a Call
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" />
+          </svg>
         </a>
 
         <button
@@ -65,7 +68,7 @@ export default function Navbar() {
           </a>
         ))}
         <a className="btn btn--primary navbar__mobile-cta" href="#contact" onClick={handleNavClick}>
-          Book Consultation
+          Book a Call
         </a>
       </div>
     </nav>
